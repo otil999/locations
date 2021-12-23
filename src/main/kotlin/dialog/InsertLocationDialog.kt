@@ -41,7 +41,8 @@ class InsertLocationDialog : View() {
 
     fun save() {
         controller.addLocation(
-                locationManager, modId, textName.text, textDescription.text, textType.text, checkBoxVisited.isSelected
+                locationManager,
+                Location(0, textName.text, textDescription.text, checkBoxVisited.isSelected, textType.text, modId)
         )
         saved = true
         close()
@@ -50,15 +51,7 @@ class InsertLocationDialog : View() {
     fun isCanceled() = !saved
 }
 
+
 class AddLocationController : Controller() {
-    fun addLocation(
-            locationManager: LocationManager,
-            modId: Int,
-            name: String,
-            description: String,
-            type: String,
-            visited: Boolean
-    ) {
-        locationManager.addLocation(Location(0, name, description, visited, type, modId))
-    }
+    internal fun addLocation(locationManager: LocationManager, location: Location) = locationManager.addLocation(location)
 }
