@@ -1,22 +1,22 @@
 package hu.otilsoft.locations.manager
 
 import hu.otilsoft.locations.Location
-import hu.otilsoft.locations.Mod
+import hu.otilsoft.locations.Category
 import java.sql.Connection
 import java.sql.PreparedStatement
 
 
 class LocationManager {
-    private val sqlInsertLocation = "INSERT INTO location (name, description, type, visited, mod_id) VALUES (?, ?, ?, ?, ?)"
-    private val sqlDeleteLocation = "DELETE FROM location WHERE id = ?"
-    private val sqlUpdateLocation = "UPDATE location SET name = ?, description = ?, type = ?, visited = ? WHERE id = ?"
-    private val sqlSelectLocationByMod = "SELECT * FROM location WHERE mod_id = ? ORDER BY id"
+    private val sqlInsert = "INSERT INTO location (name, description, type, visited, category_id) VALUES (?, ?, ?, ?, ?)"
+    private val sqlDelete = "DELETE FROM location WHERE id = ?"
+    private val sqlUpdate = "UPDATE location SET name = ?, description = ?, type = ?, visited = ? WHERE id = ?"
+    private val sqlSelectByCategory = "SELECT * FROM location WHERE category_id = ? ORDER BY id"
 
     var connection: Connection? = null
 
-    fun addLocation(location: Location) {
+    fun add(location: Location) {
         connection?.let { connection ->
-            connection.prepareStatement(sqlInsertLocation).use {
+            connection.prepareStatement(sqlInsert).use {
                 fillCommonParamsInStatement(it, location)
                 it.setInt(5, location.modId)
                 it.executeUpdate()
@@ -31,9 +31,9 @@ class LocationManager {
         statement.setBoolean(4, location.visited)
     }
 
-    fun updateLocation(location: Location) {
+    fun update(location: Location) {
         connection?.let { connection ->
-            connection.prepareStatement(sqlInsertLocation).use {
+            connection.prepareStatement(sqlUpdate).use {
                 fillCommonParamsInStatement(it, location)
                 it.setInt(5, location.id)
                 it.executeUpdate()
@@ -41,20 +41,20 @@ class LocationManager {
         }
     }
 
-    fun deleteLocation(id: Int) {
+    fun delete(id: Int) {
         connection?.let { connection ->
-            connection.prepareStatement(sqlDeleteLocation).use {
+            connection.prepareStatement(sqlDelete).use {
                 it.setInt(1, id)
                 it.executeUpdate()
             }
         }
     }
 
-    fun findLocationsByModId(mod: Mod) : List<Location> {
+    fun findByCategory(category: Category) : List<Location> {
         val locationList: MutableList<Location> = mutableListOf()
         connection?.let { connection ->
-            connection.prepareStatement(sqlSelectLocationByMod).use {
-                it.setInt(1, mod.id)
+            connection.prepareStatement(sqlSelectByCategory).use {
+                it.setInt(1, category.id)
                 val result = it.executeQuery()
                 while (result.next()) {
                     locationList.add(
@@ -64,7 +64,7 @@ class LocationManager {
                                     result.getString("description"),
                                     result.getBoolean("visited"),
                                     result.getString("type"),
-                                    result.getInt("mod_id")
+                                    result.getInt("category_id")
                             )
                     )
                 }
