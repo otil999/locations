@@ -51,5 +51,5 @@ class InsertLocationDialog : View() {
 
 
 class AddLocationController(private val locationManager: LocationManager) : Controller() {
-    internal fun add(location: Location) = locationManager.addLocation(location)
+    internal fun add(location: Location) = locationManager.add(location)
 }
