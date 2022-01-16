@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane hgap="5.0" vgap="5.0">
         <columnConstraints>
@@ -22,8 +22,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="%LABEL.NAME" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" mnemonicParsing="true" labelFor="${textName}"/>
-            <TextField fx:id="textName" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+            <Label labelFor="${textName}" mnemonicParsing="true" text="%LABEL.NAME" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <TextField fx:id="textName" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -32,7 +32,7 @@
       <Separator prefWidth="200.0" />
       <ButtonBar>
         <buttons>
-          <Button fx:id="buttonSave" defaultButton="true" mnemonicParsing="true" onAction="#save" text="%BUTTON.SAVE"/>
+          <Button fx:id="buttonSave" defaultButton="true" mnemonicParsing="true" onAction="#save" text="%BUTTON.SAVE" />
         </buttons>
          <VBox.margin>
             <Insets />
