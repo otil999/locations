@@ -12,7 +12,6 @@ import tornadofx.Controller
 import tornadofx.View
 import tornadofx.get
 import tornadofx.imageview
-import java.sql.Connection
 
 
 class InsertLocationDialog : View() {
@@ -29,8 +28,8 @@ class InsertLocationDialog : View() {
 
     private var saved = false
     private val locationManager: LocationManager by param()
-    private val modId: Int by param()
-    private val controller: AddLocationController by inject()
+    private val categoryId: Int by param()
+    private val controller = AddLocationController(locationManager)
 
     override fun onBeforeShow() {
         super.onBeforeShow()
@@ -40,9 +39,8 @@ class InsertLocationDialog : View() {
     }
 
     fun save() {
-        controller.addLocation(
-                locationManager,
-                Location(0, textName.text, textDescription.text, checkBoxVisited.isSelected, textType.text, modId)
+        controller.add(
+                Location(0, textName.text, textDescription.text, checkBoxVisited.isSelected, textType.text, categoryId)
         )
         saved = true
         close()
@@ -52,6 +50,6 @@ class InsertLocationDialog : View() {
 }
 
 
-class AddLocationController : Controller() {
-    internal fun addLocation(locationManager: LocationManager, location: Location) = locationManager.addLocation(location)
+class AddLocationController(private val locationManager: LocationManager) : Controller() {
+    internal fun add(location: Location) = locationManager.addLocation(location)
 }
