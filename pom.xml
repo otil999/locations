@@ -51,7 +51,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>hu.otilsoft.random.RandomKt</mainClass>
+                            <mainClass>hu.otilsoft.locations.LocationsKt</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
