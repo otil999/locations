@@ -1,7 +1,7 @@
 package hu.otilsoft.locations
 
 
-data class Mod (
+data class Category (
     val id: Int = 0,
     val name: String = ""
 ) {
