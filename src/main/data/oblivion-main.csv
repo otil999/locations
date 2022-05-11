@@ -1,0 +1,337 @@
+IC-Market District|Imperial City|City
+IC-Arena District|Imperial City|City
+IC-Arboretum|Imperial City|City
+IC-Temple District|Imperial City|City
+IC-Talos Plaza District|Imperial City|City
+IC-Elven Gardens District|Imperial City|City
+IC-Prison District|Imperial City|City
+IC-Arcane University|Imperial City|City
+IC-Waterfront District|Imperial City|City
+IC-Green Emperor Way|Imperial City|City
+Anvil|City of Dibella on the Gold Coast in the southwest.|City
+Bravil|City of Mara by Niben Bay, south of the Imperial City.|City
+Bruma|City of Talos in the Jerall Mountains to the north, with a mainly Nord population.|City
+Cheydinhal|City of Arkay at the Valus Mountains in the northeast, with a mainly Dunmer population.|City
+Chorrol|City of Stendarr at the Colovian Highlands in the west.|City
+Kvatch|City of Akatosh overrun by the Daedra from the first portal to Oblivion, in the southwest.|City
+Leyawiin|City of Zenithar in Blackwood far south, with a mainly Khajiit and Argonian population.|City
+Skingrad|City of Julianos in the West Weald region.|City
+OB-mapicon-Camp.png Aerin's Camp|A small campsite north of Cheydinhal and Kingscrest Cavern (quest-related).|Camp
+OB-mapicon-Camp.png Atrene Camp|An empty campsite north of Anvil.|Camp
+OB-mapicon-Camp.png Bawnwatch Camp|A nearly empty campsite southeast of Bravil (quest-related).|Camp
+OB-mapicon-Camp.png Black Dog Camp|A campsite east of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Bodean Camp|An empty campsite northwest of Kvatch (quest-related).|Camp
+OB-mapicon-Camp.png Bogwater|A deserted campsite southeast of Leyawiin (quest-related).|Camp
+OB-mapicon-Camp.png Brotch Camp|A campsite northwest of Skingrad containing bandits (quest-related).|Camp
+OB-mapicon-Camp.png Camp AlesOR|A campsite north of Kvatch containing bandits (plugin-related).|Camp
+OB-mapicon-Camp.png Carbo's Camp|A campsite south of Cheydinhal containing bandits.|Camp
+OB-mapicon-Camp.png Collarbone Camp|A campsite east of Skingrad containing bandits.|Camp
+OB-mapicon-Camp.png Crestbridge Camp|A campsite southeast of the Imperial City containing NPCs (quest-related).|Camp
+OB-mapicon-Camp.png Dagny's Camp|A campsite northeast of Kvatch containing bandits (quest-related).|Camp
+OB-mapicon-Camp.png Fat Ramp Camp|A campsite west of Skingrad containing bandits.|Camp
+OB-mapicon-Camp.png Fisherman's Rock|A large campsite north of Leyawiin containing NPCs (quest-related).|Camp
+OB-mapicon-Camp.png Garnet Camp|A campsite far east of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Gnoll's Meeting Camp|A campsite east of Kvatch containing bandits.|Camp
+OB-mapicon-Camp.png Gro-Bak Camp|A campsite east of Skingrad containing bandits.|Camp
+OB-mapicon-Camp.png Hidden Camp|A campsite between Cheydinhal and Bruma containing bandits.|Camp
+OB-mapicon-Camp.png Last Chance Camp|A campsite northwest of Kvatch containing bandits.|Camp
+OB-mapicon-Camp.png Marsh-Punk Camp|A campsite far east of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Mortal Camp|A campsite southeast of Kvatch containing bandits.|Camp
+OB-mapicon-Camp.png Nayon Camp|A campsite far east of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Ra'sava Camp|A campsite east of Kvatch containing bandits.|Camp
+OB-mapicon-Camp.png Seran Camp|A campsite east of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Sercen Camp|A tiny campsite south of Cheydinhal containing a bandit.|Camp
+OB-mapicon-Camp.png Sweetwater Camp|A campsite south of the Imperial City containing bandits.|Camp
+OB-mapicon-Camp.png Troll Candle Camp|A campsite between Anvil and Kvatch acting as the home of a master marksman (quest-related).|Camp
+OB-mapicon-Camp.png Trossan Camp|A campsite northeast of Bravil containing bandits.|Camp
+OB-mapicon-Camp.png Valley View Camp|A campsite between Skingrad and Chorrol containing bandits.|Camp
+OB-mapicon-Camp.png Varus CampOR|A campsite northwest of Kvatch containing bandits (quest-related).|Camp
+OB-mapicon-Camp.png Walker Camp|A campsite north of Cheydinhal containing NPCs.|Camp
+OB-mapicon-Camp.png Wind Range Camp|A campsite north of Cheydinhal containing bandits.|Camp
+OB-mapicon-DaedricShrine.png Azura's Shrine|A Daedric shrine north-northwest of Cheydinhal.|Shrine
+OB-mapicon-DaedricShrine.png Boethia's Shrine|A Daedric shrine east of the Reed River, high in the Valus Mountains.|Shrine
+OB-mapicon-DaedricShrine.png Clavicus Vile's Shrine|A Daedric shrine southwest of the Imperial City.|Shrine
+OB-mapicon-DaedricShrine.png Hermaeus Mora's Shrine|A Daedric shrine west of Cloud Ruler Temple.|Shrine
+OB-mapicon-DaedricShrine.png Hircine's Shrine|A Daedric shrine south of the Imperial City.|Shrine
+OB-mapicon-DaedricShrine.png Malacath's Shrine|A Daedric shrine northwest of Anvil.|Shrine
+OB-mapicon-DaedricShrine.png Mephala's Shrine|A Daedric shrine northeast of the Imperial City.|Shrine
+OB-mapicon-DaedricShrine.png Meridia's Shrine|A Daedric shrine west of Skingrad.|Shrine
+OB-mapicon-DaedricShrine.png Molag Bal's Shrine|A Daedric shrine west of the Imperial City.|Shrine
+OB-mapicon-DaedricShrine.png Namira's Shrine|A Daedric shrine southeast of Bruma's East Gate.|Shrine
+OB-mapicon-DaedricShrine.png Nocturnal's Shrine|A Daedric shrine northeast of Leyawiin.|Shrine
+OB-mapicon-DaedricShrine.png Peryite's Shrine|A Daedric shrine far east of Bravil.|Shrine
+OB-mapicon-DaedricShrine.png Sheogorath's Shrine|A Daedric shrine northwest of Leyawiin|Shrine
+OB-mapicon-DaedricShrine.png Shrine of Sanguine|A Daedric shrine northwest of Skingrad.|Shrine
+OB-mapicon-DaedricShrine.png Vaermina's Shrine|A Daedric shrine southwest of Cheydinhal|Shrine
+OB-mapicon-Settlement.png Aleswell|A village with an inn north of the Imperial City (quest-related).|Village
+OB-mapicon-Settlement.png Blankenmarch|A village northeast of Leyawiin.|Village
+OB-mapicon-Settlement.png Bleaker's Way|A village with an inn between the Imperial City and Bruma (quest-related).|Village
+OB-mapicon-Settlement.png Border Watch|A village with an inn between Bravil and Leyawiin (quest-related).|Village
+OB-mapicon-Settlement.png Brindle Home|A village between Skingrad and Chorrol (quest-related).|Village
+OB-mapicon-Settlement.png Hackdirt|A village with an inn between Chorrol and Skingrad (quest-related).|Village
+OB-mapicon-Settlement.png Harlun's Watch|A village south of Cheydinhal (quest-related).|Village
+OB-mapicon-Settlement.png Pell's Gate|A small village, including an inn, directly south of the Imperial City (quest-related).|Village
+OB-mapicon-Settlement.png Water's Edge|A village north of Leyawiin (quest-related).|Village
+OB-mapicon-Settlement.png Weye|A village with an inn west of the Imperial City (quest-related).|Village
+OB-mapicon-Settlement.png Applewatch|A farmhouse west of Bruma (quest-related).|Farm
+OB-mapicon-Settlement.png Cropsford|An under-construction farmhouse southeast of the Imperial City (quest-related).|Farm
+OB-mapicon-Settlement.png Drakelowe|A farmhouse south of Cheydinhal (quest-related).|Farm
+OB-mapicon-Settlement.png Gweden Farm|A farmhouse southeast of Anvil (quest-related).|Farm
+OB-mapicon-Settlement.png Harm's Folly|A farmhouse between Bruma and Cheydinhal (quest-related).|Farm
+OB-mapicon-Settlement.png Lord Drad's Estate|A farming estate north of Anvil (quest-related).|Farm
+OB-mapicon-Settlement.png Lord Rugdumph's Estate|A farm and estate north of Cheydinhal (quest-related).|Farm
+OB-mapicon-Settlement.png Odiil Farm|A farmhouse southeast of Chorrol (quest-related).|Farm
+OB-mapicon-Settlement.png Shardrock|A sheep farm between Skingrad and Kvatch (quest-related).|Farm
+OB-mapicon-Settlement.png Shetcombe Farm|A farm northeast of Kvatch (quest-related).|Farm
+OB-mapicon-Settlement.png Whitmond Farm|A farmhouse north of Anvil (quest-related).|Farm
+OB-mapicon-Settlement.png Greyland|A house west of Leyawiin (quest-related).|House
+OB-mapicon-Door.png Isolated House|An unmarked house between Skingrad and Bravil.|House
+OB-mapicon-Door.png Melus Petilius' House|A small house in the woods north of Skingrad, just southwest of Brindle Home (quest-related).|House *
+OB-mapicon-Settlement.png Roland Jenseric's Cabin|A house between the Imperial City and Cheydinhal (quest-related).|House
+OB-mapicon-Settlement.png Weatherleah|A humble farmhouse between Skingrad and Chorrol (quest-related).|House
+OB-mapicon-Settlement.png Cadlew Chapel|A defiled chapel east of Bravil containing necromancers.|Faction settlement
+OB-mapicon-Settlement.png Cloud Ruler Temple|A fortress northwest of Bruma (quest-specific).|Faction settlement
+OB-mapicon-Settlement.png Gottlesfont Priory|A chapel and farmhouse between Skingrad and Chorrol.|Faction settlement
+OB-mapicon-Settlement.png Knights of the Thorn Headquarters|A house west of Cheydinhal.|Faction settlement
+OB-mapicon-Settlement.png Temple of the Ancestor Moths|A settlement and chapel far north of Cheydinhal.|Faction settlement
+OB-mapicon-Settlement.png Weynon Priory|A small settlement southeast of Chorrol (quest-related).|Faction settlement
+OB-mapicon-Settlement.png White Stallion Lodge|A house north of Leyawiin.|Faction settlement
+OB-mapicon-Settlement.png Priory of the NineKotN|A chapel and priory located southeast of Skingrad (plugin-specific).|Faction settlement
+OB-mapicon-AyleidRuin.png Anga|A small Ayleid ruin between the Imperial City and Bruma containing NPCs (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Anutwyll|A medium-sized Ayleid ruin northwest of Bravil containing monsters.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Arpenia|A small Ayleid ruin between Bravil and Leyawiin containing animals (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Atatar|A large Ayleid ruin between Bravil and Leyawiin containing bandits (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Bawn|A medium-sized Ayleid ruin southeast of Bravil containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Belda|A medium-sized Ayleid ruin between the Imperial City and Cheydinhal containing conjurers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Beldaburo|A medium-sized Ayleid ruin northwest of Anvil containing conjurers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Ceyatatar|A medium-sized Ayleid ruin between the Imperial City and Skingrad containing conjurers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Culotte|A small Ayleid ruin southeast of the Imperial City containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Elenglynn|A small Ayleid ruin between Chorrol and Skingrad containing necromancers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Fanacas|A small Ayleid ruin north of Cheydinhal containing vampires (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Fanacasecul|A small Ayleid ruin west of the Imperial City containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Garlas Agea|A small Ayleid ruin between Kvatch and Anvil containing necromancers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Garlas MalatarKotN|A medium-sized Ayleid ruin northwest of Anvil containing Aurorans (plugin-specific).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Hame|A medium-sized Ayleid ruin southeast of Cheydinhal containing necromancers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Hrotanda Vale|A medium-sized Ayleid ruin north of Chorrol containing bandits.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Kemen|A medium-sized Ayleid ruin east of Cheydinhal containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Lindai|A medium-sized Ayleid ruin east of Chorrol containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Lipsand Tarn|A medium-sized Ayleid ruin north of Chorrol containing vampires.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Mackamentain|A medium-sized Ayleid ruin northeast of Bravil containing necromancers (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Malada|A medium-sized Ayleid ruin far east of Bravil containing undead, monsters and animals (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Miscarcand|A medium-sized Ayleid ruin between Skingrad and Kvatch containing goblins and undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Morahame|A small Ayleid ruin east of Bravil containing monsters.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Moranda|A medium-sized Ayleid ruin between Chorrol and Bruma containing monsters (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nagastani|A medium-sized Ayleid ruin between the Imperial City and Cheydinhal containing monsters and undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Narfinsel|A small Ayleid ruin between Chorrol and Skingrad containing monsters.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nenalata|A medium-sized Ayleid ruin east of Bravil containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nenyond Twyll|A medium-sized Ayleid ruin south of the Imperial City containing necromancers (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Ninendava|A small Ayleid ruin northeast of Chorrol containing vampires (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Niryastare|A medium-sized Ayleid ruin northwest of Kvatch containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nonungalo|A medium-sized Ayleid ruin between Chorrol and Skingrad containing monsters.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nornal|A large Ayleid ruin southwest of Cheydinhal containing marauders and undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Nornalhorst|A medium-sized Ayleid ruin east of Skingrad containing vampires.|Ayleid Ruin
+The Old Way|A large Ayleid ruin underneath the Imperial City containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Ondo|A medium-sized Ayleid ruin far east of Bravil containing monsters and undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Piukanda|A medium-sized Ayleid ruin between the Imperial City and Bruma containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Rielle|A medium-sized Ayleid ruin northwest of Bruma containing undead.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Sardavar Leed|A medium-sized Ayleid ruin south of the Imperial City containing conjurers.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Sedor|A small Ayleid ruin between Cheydinhal and Bruma containing ogres (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Sercen|A small Ayleid ruin north of the Imperial City containing bandits.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Silorn|A medium-sized Ayleid ruin southeast of Skingrad containing necromancers (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Talwinque|A medium-sized Ayleid ruin between Skingrad and Kvatch containing bandits.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Telepe|A small Ayleid ruin northwest of Leyawiin containing bandits (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Trumbe|A small Ayleid ruin northwest of Kvatch containing undead.|Ayleid Ruin
+OB-mapicon-Cave.png Vahtacen|A medium-sized Ayleid ruin south of Cheydinhal containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png VanuaKotN|A medium-sized Ayleid ruin southeast of the Imperial City containing undead (plugin-specific).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Varondo|A medium-sized Ayleid ruin north of Kvatch containing conjurers and daedra.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Veyond|A large Ayleid ruin northeast of Leyawiin containing trolls.|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Vilverin|A large Ayleid ruin northeast of the Imperial City containing bandits and undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Vindasel|A small Ayleid ruin southwest of the Imperial City, west of Pell's Gate and the Old Bridge containing rats and one person (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Welke|A medium-sized Ayleid ruin east of Bravil containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Wendelbek|A large Ayleid ruin east of Bravil containing necromancers (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Wendir|A medium-sized Ayleid ruin between Chorrol and Skingrad containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-AyleidRuin.png Wenyandawik|A medium-sized Ayleid ruin northwest of Bravil containing undead (quest-related).|Ayleid Ruin
+OB-mapicon-Cave.png Amelion Tomb|A medium-sized cave northeast of Leyawiin containing undead (quest-related).|Cave
+OB-mapicon-Cave.png Arrowshaft Cavern|A medium-sized cave far east of Bravil containing animals and monsters.|Cave
+OB-mapicon-Cave.png Barren Cave|A small cave west of Cheydinhal containing vampires.|Cave
+OB-mapicon-Cave.png The Beast's Maw|A medium-sized cave between Bruma and Cheydinhal containing monsters.|Cave
+OB-mapicon-Cave.png Bedrock Break|A small cave east of Bravil containing animals and monsters.|Cave
+OB-mapicon-Cave.png Black Rock Caverns|A medium-sized cave northwest of Chorrol containing bandits.|Cave
+OB-mapicon-Cave.png Bleak Flats Cave|A small cave northwest of Skingrad containing undead (quest-related).|Cave
+OB-mapicon-Cave.png Bloodcrust Cavern|A small cave southeast of Skingrad containing vampires (quest-related).|Cave
+OB-mapicon-Cave.png Bloodmayne Cave|A medium-sized cave west of Bravil containing bandits (quest-related).|Cave
+OB-mapicon-Cave.png Bloodrun Cave|A small cave far east of Bravil containing necromancers.|Cave
+OB-mapicon-Cave.png Boreal Stone Cave|A small empty cave west of Bruma (quest-related).|Cave
+OB-mapicon-Cave.png Bramblepoint Cave|A medium-sized cave east of Bravil containing monsters (quest-related).|Cave
+OB-mapicon-Cave.png Breakneck Cave|A medium-sized cave between the Imperial City and Chorrol containing monsters.|Cave
+OB-mapicon-Cave.png Brittlerock Cave|A medium-sized cave northwest of Kvatch containing daedra (quest-related).|Cave
+OB-mapicon-Cave.png Broken Promises Cave|A small cave southwest of Chorrol containing bandits.|Cave
+OB-mapicon-Cave.png Bruma Caverns|A small cave west of Bruma containing animals (quest-related).|Cave
+OB-mapicon-Cave.png Capstone Cave|A medium-sized cave west of Bruma containing bandits.|Cave
+OB-mapicon-Cave.png Charcoal Cave|A medium-sized cave between the Imperial City and Bravil containing monsters and bandits.|Cave
+OB-mapicon-Cave.png Cracked Wood Cave|A small cave southeast of the Imperial City containing goblins (quest-related).|Cave
+OB-mapicon-Cave.png Crayfish Cave|A large cave south of Cheydinhal containing monsters.|Cave
+Crypt of the Night Mother|A small cave beneath Bravil in which the Night Mother can be summoned (quest-specific).|Cave
+OB-mapicon-Cave.png Dark Fissure|A medium-sized cave southeast of Cheydinhal containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Darkfathom Cave|A small cave southeast of Leyawiin containing daedra (quest-related).|Cave
+OB-mapicon-Settlement.png Deepscorn HollowVL|An underground lair southeast of Leyawiin catered to infamous characters (plugin-specific).|Cave
+OB-mapicon-Cave.png Dunbarrow CoveTD|A medium-sized cave south of Anvil containing a home catering to thieves (plugin-specific).|Cave
+OB-mapicon-Cave.png Dzonot Cave|A medium-sized cave west of the Imperial City containing bandits.|Cave
+OB-mapicon-Cave.png Echo Cave|A medium-sized cave west of Bruma containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Fallen Rock Cave|A small cave northwest of Skingrad containing undead (quest-related).|Cave
+OB-mapicon-Cave.png Fatback Cave|A medium-sized cave south of the Imperial City containing goblins.|Cave
+OB-mapicon-Cave.png Felgageldt Cave|A medium-sized cave between Imperial City and Skingrad containing bandits.|Cave
+OB-mapicon-Cave.png Fieldhouse Cave|A medium-sized cave northeast of Leyawiin containing conjurers.|Cave
+OB-mapicon-Cave.png Fingerbowl Cave|A large cave between the Imperial City and Bruma containing necromancers.|Cave
+OB-mapicon-Cave.png Frostfire Glade|A small cave between Bruma and Cheydinhal containing animals. It leads to an isolated, quest-specific glade.|Cave
+OB-mapicon-Cave.png Fyrelight Cave|A medium-sized cave between Skingrad and Kvatch containing monsters.|Cave
+OB-mapicon-Cave.png Glademist Cave|A small cave between Chorrol and Bruma containing monsters (quest-related).|Cave
+OB-mapicon-Cave.png Goblin Jim's Cave|A medium-sized cave north of Skingrad containing goblins.|Cave
+OB-mapicon-Cave.png Grayrock Cave|A medium-sized cave east-northeast of Skingrad containing monsters.|Cave
+OB-mapicon-Cave.png Greenmead Cave|A medium-sized cave northeast of Skingrad containing monsters.|Cave
+OB-mapicon-Cave.png Haynote Cave|A medium-sized cave between the Imperial City and Skingrad containing monsters and animals.|Cave
+OB-mapicon-Cave.png Horn Cave|A medium-sized cave south of Imperial City containing bandits and monsters.|Cave
+OB-mapicon-Cave.png Howling Cave|A medium-sized cave east of Skingrad containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Hrota Cave|A small cave north of Anvil containing bandits (quest-related).|Cave
+OB-mapicon-Cave.png Imperial Sewers N. Exit|A medium-sized sewer system north of the Imperial City containing bandits.|Cave
+OB-mapicon-Cave.png Imperial Sewers SE. Exit|The southeastern entrance to the Imperial City sewer system.|Cave
+OB-mapicon-Cave.png Imperial Prison Sewer (Tutorial)|The sewer system northeast of the Imperial City where the tutorial takes place. Later, it may be seen as Imperial Prison Sewer (Scheduled for Execution).|Cave
+OB-mapicon-Cave.png Imperial Prison Sewer (Scheduled for Execution)|The sewer system northeast of the Imperial City you access to kill Valen Dreth.|Cave
+OB-mapicon-Door.png Jakben Imbel's House|A large manor in the Imperial City Talos Plaza District found in the main plaza between The Tiber Septim Hotel and Umbacano Manor (quest-related).|Cave
+OB-mapicon-Cave.png Kindred Cave|A medium-sized cave far east of Bravil containing necromancers.|Cave
+OB-mapicon-Cave.png Kingscrest Cavern|A large cave north of Cheydinhal containing monsters.|Cave
+OB-mapicon-Cave.png Lake Arrius Caverns|A large cave north of Cheydinhal containing NPCs (quest-related).|Cave
+OB-mapicon-Cave.png Leafrot Cave|A small cave far east of Bravil containing undead (quest-related).|Cave
+OB-mapicon-Cave.png Lost Boy Cavern|A large cave far east of Bravil containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Memorial Cave|A small cave southeast of the Imperial City containing vampires (quest-related).|Cave
+OB-mapicon-Cave.png Mingo Cave|A small cave between the Imperial City and Bravil containing monsters.|Cave
+OB-mapicon-Cave.png Mongrel's Tooth Cave|A small cave north of Kvatch containing monsters.|Cave
+OB-mapicon-Cave.png Moss Rock Cavern|A small cave north of the Imperial City containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Muck Valley Cavern|A small cave between the Imperial City and Cheydinhal containing animals (quest-related).|Cave
+OB-mapicon-Cave.png Newt Cave|A medium-sized cave northeast of Bravil containing monsters.|Cave
+OB-mapicon-Cave.png Nisin Cave|A small cave between the Imperial City and Skingrad containing monsters.|Cave
+OB-mapicon-Cave.png Nonwyll Cavern|A medium-sized cave north of Chorrol containing monsters (quest-related).|Cave
+OB-mapicon-Cave.png Onyx Caverns|A medium-sized cave east of Leyawiin containing bandits.|Cave
+OB-mapicon-Cave.png Outlaw Endre's Cave|A medium-sized cave southwest of Bruma containing bandits.|Cave
+OB-mapicon-Cave.png Pothole Caverns|A small cave between the Imperial City and Bravil containing necromancers.|Cave
+OB-mapicon-Cave.png Quickwater Cave|A medium-sized cave north of Cheydinhal containing monsters.|Cave
+OB-mapicon-Cave.png Red Ruby Cave|A medium-sized cave southeast of Bruma containing monsters.|Cave
+OB-mapicon-Cave.png Redguard Valley Cave|A small cave between Chorrol and Skingrad containing ogres (quest-related).|Cave
+OB-mapicon-Cave.png Redwater Slough|A small cave far east of Bravil containing vampires (quest-related).|Cave
+OB-mapicon-Cave.png Reedstand Cave|A medium-sized cave between Bravil and Leyawiin containing monsters.|Cave
+OB-mapicon-Cave.png Robber's Glen Cave|A small cave northwest of Bravil containing imps (quest-related).|Cave
+OB-mapicon-Cave.png Rock Bottom Caverns|A small cave between Chorrol and Skingrad containing goblins.|Cave
+OB-mapicon-Cave.png Rockmilk Cave|A medium-sized cave between Bravil and Leyawiin containing marauders and bandits (quest-related).|Cave
+OB-mapicon-Cave.png Sage Glen Hollow|A medium-sized cave northeast of Bravil containing conjurers.|Cave
+OB-mapicon-Cave.png Sandstone Cavern|A medium-sized cave northeast of Kvatch containing monsters (quest-related).|Cave
+OB-mapicon-Cave.png Serpent Hollow Cave|A medium-sized cave between Chorrol and Skingrad containing monsters.|Cave
+OB-mapicon-Cave.png Serpent's Trail|A small cave northeast of Bruma containing monsters and animals (quest-related).|Cave
+OB-mapicon-Cave.png Shadow's Rest Cavern|A medium-sized cave northeast of Chorrol containing monsters.|Cave
+OB-mapicon-Cave.png Shattered Scales Cave|A medium-sized cave far southeast of Bravil containing monsters.|Cave
+OB-mapicon-Cave.png Shinbone Cave|A medium-sized cave southeast of the Imperial City containing goblins.|Cave
+OB-mapicon-Cave.png Sideways Cave|A medium-sized cave northeast of the Imperial City containing monsters.|Cave
+OB-mapicon-Cave.png Silver Tooth Cave|A medium-sized cave between Cheydinhal and Bruma containing goblins.|Cave
+OB-mapicon-Cave.png Sinkhole Cave|A medium-sized cave northwest of the Imperial City containing bandits.|Cave
+OB-mapicon-Cave.png Smoke Hole Cave|A medium-sized cave between Kvatch and Anvil containing undead.|Cave
+OB-mapicon-Cave.png Smuggler's Cave|A small empty cave south of Anvil (download-related).|Cave
+OB-mapicon-Cave.png Swampy Cave|A medium-sized cave southeast of Cheydinhal containing trolls (quest-related).|Cave
+Temple of the Ancestor Moths|A large cave north of Cheydinhal (quest-related).|Cave
+OB-mapicon-Cave.png Tidewater Cave|A small cave southeast of Leyawiin containing trolls (quest-related).|Cave
+OB-mapicon-Cave.png Timberscar Hollow|A small cave southeast of the Imperial City containing goblins (quest-related).|Cave
+OB-mapicon-Cave.png Toadstool Hollow|A medium-sized cave south of Bruma containing undead.|Cave
+OB-mapicon-Cave.png Underpall Cave|A large cave between Bruma and Chorrol containing necromancers (plugin-related).|Cave
+OB-mapicon-Cave.png Undertow Cavern|A medium-sized cave north of Leyawiin containing bandits (quest-related).|Cave
+OB-mapicon-Cave.png Unmarked Cave|A medium-sized cave between the Imperial City and Bruma containing monsters.|Cave
+OB-mapicon-Cave.png Veyond Cave|A large cave north of Bravil containing NPCs.|Cave
+OB-mapicon-Cave.png Wellspring Cave|A small cave east of the Imperial City containing necromancers (quest-related).|Cave
+OB-mapicon-Cave.png Wenderbek Cave|A small cave south of Cheydinhal containing goblins.|Cave
+OB-mapicon-Cave.png Wind Cave|A medium-sized cave between Chorrol and Skingrad containing monsters.|Cave
+OB-mapicon-Cave.png Yellow Tick Cave|A medium-sized cave between the Imperial City and Chorrol containing conjurers.|Cave
+OB-mapicon-Fort.png Arkved's Tower|A large fort southwest of Cheydinhal containing daedra (quest-related).|Fort
+OB-mapicon-Fort.png Battlehorn CastleFS|A large castle west of Chorrol that can be won by defeating the attacking marauders (download-specific).|Fort
+OB-mapicon-Fort.png Crowhaven|A medium-sized fort northwest of Anvil containing vampires (quest-related).|Fort
+OB-mapicon-Mine.png Dasek Moor|A medium-sized fort south of Kvatch containing marauders and undead.|Fort
+OB-mapicon-Fort.png Fathis Aren's Tower|A medium-sized fort south of Bravil containing conjurers, daedra, and dremora (quest-related).|Fort
+OB-mapicon-Fort.png Fort Alessia|A medium-sized fort between the Imperial City and Bravil containing marauders.|Fort
+OB-mapicon-Fort.png Fort Ash|A medium-sized fort between the Imperial City and Chorrol containing goblins.|Fort
+OB-mapicon-Fort.png Fort Aurus|A small fort northeast of Bravil, across the Niben Bay, containing conjurers (quest-related).|Fort
+OB-mapicon-Fort.png Fort Black Boot|A small fort between Bravil and Skingrad containing conjurers.|Fort
+OB-mapicon-Fort.png Fort Blueblood|A medium-sized fort southeast of Leyawiin containing marauders (quest-related).|Fort
+OB-mapicon-Fort.png Fort BulwarkKotN|A medium-sized fort northeast of Leyawiin containing conjurers (plugin-specific).|Fort
+OB-mapicon-Fort.png Fort Caractacus|A small fort north of the Imperial City containing conjurers (quest-related).|Fort
+OB-mapicon-Fort.png Fort Carmala|A small fort between Chorrol and Skingrad containing vampires (quest-related).|Fort
+OB-mapicon-Fort.png Fort Cedrian|A medium-sized fort between Bravil and Cheydinhal containing marauders.|Fort
+OB-mapicon-Fort.png Fort Chalman|A small fort northeast of the Imperial City containing undead.|Fort
+OB-mapicon-Fort.png Fort Coldcorn|A small fort between the Imperial City and Chorrol containing monsters (quest-related).|Fort
+OB-mapicon-Fort.png Fort Cuptor|A medium-sized fort far east of Bravil containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Dirich|A small fort between Skingrad and Chorrol containing undead (quest-related).|Fort
+OB-mapicon-Fort.png Fort Doublecross|A medium-sized fort northeast of Leyawiin containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Empire|A medium-sized fort northwest of the Imperial City containing monsters.|Fort
+OB-mapicon-Fort.png Fort Entius|A medium-sized fort far east of Bravil containing conjurers.|Fort
+OB-mapicon-Fort.png Fort Facian|A medium-sized fort southeast of Cheydinhal containing undead.|Fort
+OB-mapicon-Fort.png Fort Farragut|A small fort east of Cheydinhal containing undead (quest-related).|Fort
+OB-mapicon-Fort.png Fort Flecia|A small fort east of Bravil containing goblins.|Fort
+OB-mapicon-Fort.png Fort Gold-Throat|A small fort east of Bravil containing goblins.|Fort
+OB-mapicon-Fort.png Fort Grief|A medium-sized fort northeast of Bravil containing NPCs (quest-locked).|Fort
+OB-mapicon-Fort.png Fort Hastrel|A medium-sized fort north of Kvatch containing vampires.|Fort
+OB-mapicon-Fort.png Fort Homestead|A medium-sized fort south of the Imperial City containing marauders.|Fort
+OB-mapicon-Fort.png Fort Horunn|A medium-sized fort between Bruma and Cheydinhal containing monsters.|Fort
+OB-mapicon-Fort.png Fort Irony|A small fort southeast of Bravil containing goblins (quest-related).|Fort
+OB-mapicon-Fort.png Fort Istirus|A medium-sized fort between Skingrad and Kvatch containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Linchal|A medium-sized fort north of Kvatch containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Magia|A medium-sized fort east of the Imperial City containing undead (quest-related).|Fort
+OB-mapicon-Fort.png Fort Naso|A small fort south of Cheydinhal containing vampires.|Fort
+OB-mapicon-Fort.png Fort Nikel|A small fort west of the Imperial City containing bandits and marauders.|Fort
+OB-mapicon-Fort.png Fort Nomore|A medium-sized fort between Bravil and Leyawiin containing monsters.|Fort
+OB-mapicon-Fort.png Fort Ontus|A medium-sized fort between Chorrol and Kvatch containing necromancers (quest-related).|Fort
+OB-mapicon-Fort.png Fort Pale Pass|A large fort hidden deep in the mountains northeast of Bruma containing undead Akaviri soldiers (quest-related).|Fort
+OB-mapicon-Fort.png Fort Rayles|A medium-sized fort northwest of Chorrol containing conjurers.|Fort
+OB-mapicon-Fort.png Fort Redman|A medium-sized fort between Bravil and Leyawiin containing vampires.|Fort
+OB-mapicon-Fort.png Fort Redwater|A medium-sized fort far east of Bravil containing vampires.|Fort
+OB-mapicon-Fort.png Fort Roebeck|A medium-sized fort south of the Imperial City containing conjurers.|Fort
+OB-mapicon-Fort.png Fort Scinia|A medium-sized fort east of Cheydinhal containing marauders and undead (quest-related).|Fort
+OB-mapicon-Fort.png Fort Sejanus|A medium-sized fort southeast of the Imperial City containing conjurers.|Fort
+OB-mapicon-Fort.png Fort Strand|A medium-sized fort east of Anvil containing marauders (quest-related).|Fort
+OB-mapicon-Fort.png Fort Sutch|A small fort north of Anvil containing mercenaries (quest-related).|Fort
+OB-mapicon-Fort.png Fort Teleman|A medium-sized fort northeast of Leyawiin containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Urasek|A medium-sized fort east of the Imperial City containing goblins.|Fort
+OB-mapicon-Fort.png Fort Variela|A medium-sized fort between Bravil and the Imperial City containing necromancers.|Fort
+OB-mapicon-Fort.png Fort Virtue|A small fort southwest of the Imperial City containing undead.|Fort
+OB-mapicon-Fort.png Fort Vlastarus|A small fort east of Skingrad containing vampires (quest-related).|Fort
+OB-mapicon-Fort.png Fort Wariel|A small fort northwest of Kvatch containing marauders.|Fort
+OB-mapicon-Fort.png Fort Wooden Hand|A medium-sized fort between Chorrol and Skingrad containing marauders.|Fort
+OB-mapicon-Settlement.png Frostcrag SpireWT|A tower east of Bruma that serves as a home for magic-oriented characters (download-specific).|Fort
+OB-mapicon-Fort.png Sancre Tor|A large fort north of Chorrol containing undead (quest-related).|Fort
+OB-mapicon-Fort.png Sundercliff WatchMR|A very large fort far east of Bravil containing NPCs and vampires (download-specific).|Fort
+OB-mapicon-Mine.png Abandoned Mine|A medium-sized mine far east of Bravil containing bandits.|Mine
+OB-mapicon-Mine.png Barren Mine|A small mine between Bravil and Leyawiin containing goblins.|Mine
+OB-mapicon-Mine.png Belletor's Folly|A medium-sized mine south of Kvatch containing bandits.|Mine
+OB-mapicon-Mine.png Bleak Mine|A small silver mine north of Anvil containing NPCs (quest-related).|Mine
+OB-mapicon-Mine.png Collapsed Mine|A medium-sized mine far east of Bravil containing bandits.|Mine
+OB-mapicon-Mine.png Crumbling Mine|A small mine southeast of Chorrol containing bandits.|Mine
+OB-mapicon-Mine.png Cursed Mine|A medium-sized mine west of Skingrad containing bandits.|Mine
+OB-mapicon-Mine.png Derelict Mine|A medium-sized mine east of Skingrad containing goblins.|Mine
+OB-mapicon-Mine.png Deserted Mine|A medium-sized mine far east of Bravil containing bandits.|Mine
+OB-mapicon-Mine.png Desolate Mine|A small mine northwest of Cheydinhal containing goblins (quest-related).|Mine
+OB-mapicon-Mine.png Doomed Mine|A small mine southeast of Cheydinhal containing bandits.|Mine
+OB-mapicon-Mine.png Echo Mine|A small mine northwest of Skingrad containing bandits.|Mine
+OB-mapicon-Mine.png Empty Mine|A medium-sized mine east of the Imperial City containing goblins.|Mine
+OB-mapicon-Mine.png Exhausted Mine|A medium-sized mine between the Imperial City and Cheydinhal containing goblins (quest-related).|Mine
+OB-mapicon-Mine.png Flooded Mine|A small mine north of Bravil containing one NPC (quest-related).|Mine
+OB-mapicon-Mine.png Forsaken Mine|A medium-sized mine south of Leyawiin containing trolls (quest-related).|Mine
+OB-mapicon-Mine.png Gutted Mine|A small mine north of Cheydinhal containing vampires (quest-related).|Mine
+OB-mapicon-Mine.png Haunted Mine|A medium-sized mine southeast of Bravil and northeast of Leyawiin containing goblins.|Mine
+OB-mapicon-Mine.png Infested Mine|A medium-sized mine north of Kvatch containing marauders.|Mine
+OB-mapicon-Mine.png Pillaged Mine|A medium-sized mine southwest of Chorrol containing goblins.|Mine
+OB-mapicon-Mine.png Plundered Mine|A medium-sized mine east of Bruma containing goblins.|Mine
+OB-mapicon-Mine.png Rickety Mine|A medium-sized mine east of Cheydinhal containing bandits.|Mine
+OB-mapicon-Mine.png Shattered Mine|A medium-sized mine north of Kvatch containing bandits.|Mine
+OB-mapicon-Mine.png Squandered Mine|A medium-sized mine south of Cheydinhal containing bandits (quest-related).|Mine
+OB-mapicon-Inn.png Bay Roan Stables|A stable north of the city of Bravil.|Stable
+OB-mapicon-Inn.png Black Waterside Stables|A stable west of the city of Cheydinhal.|Stable
+OB-mapicon-Inn.png Chestnut Handy StablesHA|A stable west of the Talos Plaza District of the Imperial City.|Stable
+OB-mapicon-Inn.png Five Riders Stables|A stable just to the northwest of Leyawiin.|Stable
+OB-mapicon-Inn.png Grateful Pass Stables|A stable just west of Skingrad.|Stable
+OB-mapicon-Inn.png Horse Whisperer Stables|A stable just to the north of Anvil.|Stable
+OB-mapicon-Inn.png North Country Stables|A stable located just to the south of Chorrol.|Stable
+OB-mapicon-Inn.png Wildeye Stables|A stable just east of the city of Bruma.|Stable

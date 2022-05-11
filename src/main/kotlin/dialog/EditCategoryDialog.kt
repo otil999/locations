@@ -13,7 +13,7 @@ import tornadofx.get
 import tornadofx.imageview
 
 
-class EditModDialog : View() {
+class EditCategoryDialog : View() {
     init {
         messages = ResourceBundle.getBundle("edit-category-dialog")
         title = messages["DIALOG.TITLE"]
@@ -23,9 +23,9 @@ class EditModDialog : View() {
     private val updateMode: Boolean by param()
     private val category: Category by param()
     private val categoryManager: CategoryManager by param()
-    private val controller = EditModController(categoryManager)
+    private val controller = EditCategoryController(categoryManager)
 
-    override val root : VBox by fxml("/edit-category-dialog.fxml")
+    override val root: VBox by fxml("/edit-category-dialog.fxml")
     private val buttonSave: Button by fxid("buttonSave")
     val textName: TextField by fxid("textName")
 
@@ -49,7 +49,7 @@ class EditModDialog : View() {
 }
 
 
-internal class EditModController(private val categoryManager: CategoryManager) : Controller() {
+internal class EditCategoryController(private val categoryManager: CategoryManager) : Controller() {
     fun rename(category: Category) = categoryManager.rename(category)
     fun add(category: Category) = categoryManager.add(category)
 }

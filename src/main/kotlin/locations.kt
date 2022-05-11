@@ -1,9 +1,6 @@
 package hu.otilsoft.locations
 
-import hu.otilsoft.locations.dialog.EditGameDialog
-import hu.otilsoft.locations.dialog.EditModDialog
-import hu.otilsoft.locations.dialog.ImportLocationsDialog
-import hu.otilsoft.locations.dialog.InsertLocationDialog
+import hu.otilsoft.locations.dialog.*
 import hu.otilsoft.locations.manager.GameManager
 import hu.otilsoft.locations.manager.LocationManager
 import hu.otilsoft.locations.manager.CategoryManager
@@ -298,11 +295,11 @@ class MainView : View() {
         progressBarLocations.progress = numberOfVisitedLocations.toDouble() / numberOfLocations
     }
 
-    private fun showEditModDialog(update: Boolean, category: Category) {
-        val dialog = find<EditModDialog>(
+    private fun showEditCategoryDialog(update: Boolean, category: Category) {
+        val dialog = find<EditCategoryDialog>(
                 "updateMode" to update,
-                "mod" to category,
-                "modManager" to controller.categoryManager
+                "category" to category,
+                "categoryManager" to controller.categoryManager
         )
         dialog.openModal(block = true, owner = primaryStage)
         if (!dialog.isCanceled()) {
@@ -312,9 +309,9 @@ class MainView : View() {
         }
     }
 
-    fun onNewMod() = showEditModDialog(false, Category())
+    fun onNewMod() = showEditCategoryDialog(false, Category())
 
-    fun onEditMod() = showEditModDialog(true, comboCategory.selectedItem!!)
+    fun onEditMod() = showEditCategoryDialog(true, comboCategory.selectedItem!!)
 
     fun onDeleteMod() {
         val alert = alert(
