@@ -127,7 +127,7 @@
                         <Label text="%LABEL.GAME" />
                         <ComboBox fx:id="comboGame" onAction="#onSelectGame" prefWidth="150.0" GridPane.columnIndex="1" />
                         <Label layoutX="10.0" layoutY="27.0" text="%LABEL.CATEGORY" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="comboMod" onAction="#onSelectMod" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="comboMod" onAction="#onSelectCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </items>

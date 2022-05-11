@@ -211,7 +211,7 @@ class MainView : View() {
         tableLocation.items.clear()
     }
 
-    fun onSelectMod() {
+    fun onSelectCategory() {
         tableLocation.items.clear()
         if (comboCategory.items.isEmpty() || comboCategory.selectedItem == null) {
             disableMod()
@@ -274,7 +274,7 @@ class MainView : View() {
                                                     buttons = arrayOf(ButtonType.NO, ButtonType.YES)
                                             ).result == ButtonType.YES) {
                                         deleteLocation((it.source as Button).userData as Int)
-                                        onSelectMod()
+                                        onSelectCategory()
                                     }
                                 }
                             })
@@ -337,7 +337,7 @@ class MainView : View() {
         )
         dialog.openModal(block = true, owner = primaryStage)
         if (!dialog.isCanceled()) {
-            onSelectMod()
+            onSelectCategory()
         }
     }
 
@@ -352,7 +352,7 @@ class MainView : View() {
                     "category" to comboCategory.selectedItem
             )
             dialog.openModal(owner = primaryStage, block = true)
-            onSelectMod()
+            onSelectCategory()
         }
     }
 
