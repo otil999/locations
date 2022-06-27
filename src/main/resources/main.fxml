@@ -153,7 +153,7 @@
   </ScrollPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label fx:id="labelProgress" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+        <Label fx:id="labelProgress" maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
           <font>
             <Font size="11.0" fx:id="x3" />
           </font>
