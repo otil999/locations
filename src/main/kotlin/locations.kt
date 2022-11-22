@@ -67,6 +67,7 @@ class MainView : View() {
     private val buttonSearchLocationPrev: Button by fxid("buttonSearchLocationPrev")
     private val progressBarLocations: ProgressBar by fxid("progressBarLocations")
     private val labelProgress: Label by fxid("labelProgress")
+    private val buttonResetLocations: Button by fxid("buttonResetLocations")
 
     override fun onBeforeShow() {
         super.onBeforeShow()
@@ -82,6 +83,7 @@ class MainView : View() {
         buttonRandomLocation.imageview(Image("images/random-location.png"))
         buttonSearchLocationNext.imageview(Image("images/search-next.png"))
         buttonSearchLocationPrev.imageview(Image("images/search-prev.png"))
+        buttonResetLocations.imageview(Image("images/reset-locations.png"))
 
         initColumns()
         fillGameCombo()
@@ -155,7 +157,7 @@ class MainView : View() {
         buttonRenameGame.isDisable = true
         buttonCloneGame.isDisable = true
         buttonDeleteGame.isDisable = true
-        disableMod()
+        disableCategory()
         buttonNewMod.isDisable = true
         disableLocation()
     }
@@ -181,7 +183,7 @@ class MainView : View() {
         }
     }
 
-    private fun disableMod() {
+    private fun disableCategory() {
         buttonNewMod.isDisable = false
         buttonRenameMod.isDisable = true
         buttonDeleteMod.isDisable = true
@@ -189,7 +191,7 @@ class MainView : View() {
         disableLocation()
     }
 
-    private fun enableMod() {
+    private fun enableCategory() {
         buttonNewMod.isDisable = false
         buttonRenameMod.isDisable = false
         buttonDeleteMod.isDisable = false
@@ -200,6 +202,7 @@ class MainView : View() {
         buttonInsertLocation.isDisable = false
         buttonImportLocations.isDisable = false
         buttonRandomLocation.isDisable = false
+        buttonResetLocations.isDisable = false
         enableSearchButtonsWhenTextNotEmpty()
     }
 
@@ -207,6 +210,7 @@ class MainView : View() {
         buttonRandomLocation.isDisable = true
         buttonInsertLocation.isDisable = true
         buttonImportLocations.isDisable = true
+        buttonResetLocations.isDisable = true
         enableSearchButtonsWhenTextNotEmpty()
         tableLocation.items.clear()
     }
@@ -214,9 +218,9 @@ class MainView : View() {
     fun onSelectCategory() {
         tableLocation.items.clear()
         if (comboCategory.items.isEmpty() || comboCategory.selectedItem == null) {
-            disableMod()
+            disableCategory()
         } else {
-            enableMod()
+            enableCategory()
             val locations = controller.selectLocationByCategory(comboCategory.selectedItem!!)
             locations.map { location ->
                 LocationRow(
@@ -323,7 +327,7 @@ class MainView : View() {
             controller.deleteCategory(comboCategory.selectedItem!!)
             fillModCombo()
             if (comboCategory.items.isEmpty()) {
-                disableMod()
+                disableCategory()
             } else {
                 comboCategory.selectionModel.selectFirst()
             }
@@ -402,6 +406,11 @@ class MainView : View() {
             buttonSearchLocationPrev.isDisable = false
         }
     }
+
+    fun onResetLocations() {
+        controller.resetAllLocations(comboCategory.selectedItem!!)
+        onSelectCategory()
+    }
 }
 
 
@@ -430,4 +439,5 @@ class MainController : Controller() {
     internal fun deleteLocation(id: Int) = locationManager.delete(id)
     internal fun selectLocationByCategory(category: Category) : List<Location> = locationManager.findByCategory(category)
     internal fun updateLocation(location: Location) = locationManager.update(location)
+    internal fun resetAllLocations(category: Category) = locationManager.resetAll(category)
 }

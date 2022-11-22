@@ -11,6 +11,7 @@ class LocationManager {
     private val sqlDelete = "DELETE FROM location WHERE id = ?"
     private val sqlUpdate = "UPDATE location SET name = ?, description = ?, type = ?, visited = ? WHERE id = ?"
     private val sqlSelectByCategory = "SELECT * FROM location WHERE category_id = ? ORDER BY id"
+    private val sqlResetAll = "UPDATE location SET visited = FALSE WHERE category_id = ?"
 
     var connection: Connection? = null
 
@@ -71,5 +72,14 @@ class LocationManager {
             }
         }
         return locationList
+    }
+
+    fun resetAll(category: Category) {
+        connection?.let { connection ->
+            connection.prepareStatement(sqlResetAll).use {
+                it.setInt(1, category.id)
+                it.executeUpdate()
+            }
+        }
     }
 }

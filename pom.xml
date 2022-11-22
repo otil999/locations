@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>hu.otilsoft</groupId>
     <artifactId>locations</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 
     <name>${project.artifactId}</name>
     <description>JavaFX based Bethesda game location chooser</description>
 
     <properties>
-        <kotlin.version>1.5.10</kotlin.version>
+        <kotlin.version>1.6.21</kotlin.version>
         <jvm.version>11</jvm.version>
     </properties>
 
@@ -22,7 +22,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>1.5.10</version>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${jvm.version}</jvmTarget>
                 </configuration>

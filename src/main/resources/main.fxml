@@ -53,7 +53,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
       <HBox fx:id="hBoxControl" VBox.vgrow="NEVER">
          <children>
@@ -89,6 +89,7 @@
                               <Button fx:id="buttonInsertLocation" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#onInsertLocation" text="%BUTTON.INSERT_LOCATION" />
                               <Button fx:id="buttonImportLocations" contentDisplay="TOP" disable="true" layoutX="206.0" layoutY="10.0" mnemonicParsing="false" onAction="#onImportLocations" text="%BUTTON.IMPORT_LOCATION" />
                               <Button fx:id="buttonRandomLocation" contentDisplay="TOP" disable="true" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseRandomLocation" text="%BUTTON.RANDOM_LOCATION" />
+                              <Button fx:id="buttonResetLocations" contentDisplay="TOP" disable="true" layoutX="403.0" layoutY="26.0" mnemonicParsing="false" onAction="#onResetLocations" text="%BUTTON.RESET_LOCATION" />
                               <Separator maxWidth="1.0" minWidth="1.0" orientation="VERTICAL" prefWidth="1.0">
                                  <padding>
                                     <Insets left="2.0" />
