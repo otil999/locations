@@ -408,8 +408,15 @@ class MainView : View() {
     }
 
     fun onResetLocations() {
-        controller.resetAllLocations(comboCategory.selectedItem!!)
-        onSelectCategory()
+        val alert = alert(
+                Alert.AlertType.CONFIRMATION,
+                "Do you really want to reset all locations?",
+                buttons = arrayOf(ButtonType.NO, ButtonType.YES)
+        )
+        if (alert.result == ButtonType.YES) {
+            controller.resetAllLocations(comboCategory.selectedItem!!)
+            onSelectCategory()
+        }
     }
 }
 
