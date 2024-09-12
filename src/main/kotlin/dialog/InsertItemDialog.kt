@@ -28,6 +28,8 @@ class InsertLocationDialog(owner: Window, private val category: Category, itemMa
 
         title = resources.getString("TITLE")
         buttonSave.graphic = imageView(resources, "BUTTON.SAVE.ICON")
+
+        println("CAT:${category.id}")
     }
 
     @FXML private lateinit var buttonSave: Button

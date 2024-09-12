@@ -21,7 +21,7 @@ class CategoryManager {
                 it.executeUpdate()
             }
         }
-        return category
+        return findByName(category.name)
     }
 
     fun rename(category: Category, newName: String): Category {
