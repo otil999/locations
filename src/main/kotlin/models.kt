@@ -15,7 +15,7 @@ data class Item(
     val description: String,
     val visited: Boolean,
     val type: String,
-    val modId: Int
+    val categoryId: Int
 ) {
     override fun toString(): String = name
 }

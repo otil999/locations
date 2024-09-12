@@ -19,7 +19,7 @@ class ItemManager {
         connection?.let { connection ->
             connection.prepareStatement(sqlInsert).use {
                 fillCommonParamsInStatement(it, item)
-                it.setInt(5, item.modId)
+                it.setInt(5, item.categoryId)
                 it.executeUpdate()
             }
         }
@@ -52,13 +52,13 @@ class ItemManager {
     }
 
     fun findByCategory(category: Category) : List<Item> {
-        val locationList: MutableList<Item> = mutableListOf()
+        val itemList: MutableList<Item> = mutableListOf()
         connection?.let { connection ->
             connection.prepareStatement(sqlSelectByCategory).use {
                 it.setInt(1, category.id)
                 val result = it.executeQuery()
                 while (result.next()) {
-                    locationList.add(
+                    itemList.add(
                             Item(
                                     result.getInt("id"),
                                     result.getString("name"),
@@ -71,7 +71,7 @@ class ItemManager {
                 }
             }
         }
-        return locationList
+        return itemList
     }
 
     fun resetAll(category: Category) {
