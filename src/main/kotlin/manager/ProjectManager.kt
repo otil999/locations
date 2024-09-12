@@ -6,9 +6,8 @@ import java.nio.file.Paths
 import java.sql.Connection
 import java.sql.DriverManager
 import java.util.function.BiPredicate
-import kotlin.streams.toList
 
-class GameManager {
+class ProjectManager {
     val dataRoot: Path = Paths.get("")
     private var connection: Connection? = null
 
@@ -20,11 +19,11 @@ class GameManager {
     """.trimIndent()
 
     private val sqlCreateLocationTable = """
-        CREATE TABLE IF NOT EXISTS location (
+        CREATE TABLE IF NOT EXISTS item (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             description TEXT,
-            visited BOOLEAN NOT NULL DEFAULT FALSE,
+            passed BOOLEAN NOT NULL DEFAULT FALSE,
             category_id INTEGER NOT NULL,
             type STRING NOT NULL,
             FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
@@ -81,11 +80,9 @@ class GameManager {
         dataRoot.resolve("${name}.db").toFile().delete()
     }
 
-    fun findGames() =
+    fun findProjects(): List<String> =
             Files
-                    .find(dataRoot, 1, BiPredicate {
-                        path, attrs -> attrs.isRegularFile && path.toString().endsWith(".db")
-                    })
-                    .map { it.toString().replace(".db", "") }
-                    .toList()
+                .find(dataRoot, 1, BiPredicate { path, attrs -> attrs.isRegularFile && path.toString().endsWith(".db") })
+                .map { it.toString().replace(".db", "") }
+                .toList()
 }

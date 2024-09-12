@@ -1,55 +1,71 @@
 package hu.otilsoft.locations.dialog
 
 import hu.otilsoft.locations.Category
+import hu.otilsoft.locations.NoButtonBarDialogPane
+import hu.otilsoft.locations.imageView
 import hu.otilsoft.locations.manager.CategoryManager
-import java.util.ResourceBundle
+import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
+import javafx.scene.control.ButtonType
+import javafx.scene.control.Dialog
 import javafx.scene.control.TextField
-import javafx.scene.image.Image
-import javafx.scene.layout.VBox
-import tornadofx.Controller
-import tornadofx.View
-import tornadofx.get
-import tornadofx.imageview
+import javafx.stage.Modality
+import javafx.stage.Window
+import java.util.*
 
 
-class EditCategoryDialog : View() {
-    init {
-        messages = ResourceBundle.getBundle("edit-category-dialog")
-        title = messages["DIALOG.TITLE"]
-    }
-
-    private var saved = false
-    private val updateMode: Boolean by param()
-    private val category: Category by param()
-    private val categoryManager: CategoryManager by param()
+class EditCategoryDialog(
+    owner: Window,
+    private val update: Boolean,
+    private val category: Category,
+    categoryManager: CategoryManager) : Dialog<ButtonType>()
+{
     private val controller = EditCategoryController(categoryManager)
+    private var savedCategory: Category = Category()
 
-    override val root: VBox by fxml("/edit-category-dialog.fxml")
-    private val buttonSave: Button by fxid("buttonSave")
-    val textName: TextField by fxid("textName")
+    @FXML private lateinit var buttonSave: Button
+    @FXML private lateinit var textName: TextField
 
-    override fun onBeforeShow() {
-        super.onBeforeShow()
-        buttonSave.imageview(Image("images/save-mini.png"))
+    init {
+        val resources = ResourceBundle.getBundle("edit-category-dialog")
+        val fxmlLoader = FXMLLoader(this::class.java.getResource("/edit-category-dialog.fxml"), resources)
+        fxmlLoader.setController(this)
+
+        initOwner(owner)
+        initModality(Modality.APPLICATION_MODAL)
+
+        dialogPane = NoButtonBarDialogPane()
+        dialogPane.content = fxmlLoader.load()
+        dialogPane.scene.window.setOnCloseRequest { _ -> run { onCloseRequest() } }
+
+        title = resources.getString(if (update) { "TITLE.RENAME_CATEGORY" } else { "TITLE.NEW_CATEGORY" })
         textName.text = category.name
+        buttonSave.graphic = imageView(resources, "BUTTON.SAVE.ICON")
     }
 
-    fun save() {
-        if (updateMode) {
-            controller.rename(Category(category.id, textName.text))
-        } else {
-            controller.add(Category(name = textName.text))
-        }
-        saved = true
+    private fun onCloseRequest() {
+        result = ButtonType.CANCEL
         close()
     }
 
-    fun isCanceled() = !saved
+    @FXML
+    fun onSave() {
+        val categoryName = textName.text
+        if (update) {
+            savedCategory = controller.rename(category, categoryName)
+        } else {
+            savedCategory = controller.add(Category(name = categoryName))
+        }
+        result = ButtonType.OK
+        close()
+    }
+
+    fun savedCategory() = savedCategory
 }
 
 
-internal class EditCategoryController(private val categoryManager: CategoryManager) : Controller() {
-    fun rename(category: Category) = categoryManager.rename(category)
+internal class EditCategoryController(private val categoryManager: CategoryManager) {
+    fun rename(category: Category, newName: String) = categoryManager.rename(category, newName)
     fun add(category: Category) = categoryManager.add(category)
 }

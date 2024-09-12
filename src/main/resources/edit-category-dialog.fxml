@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane hgap="5.0" vgap="5.0">
         <columnConstraints>
@@ -32,7 +32,7 @@
       <Separator prefWidth="200.0" />
       <ButtonBar>
         <buttons>
-          <Button fx:id="buttonSave" defaultButton="true" mnemonicParsing="true" onAction="#save" text="%BUTTON.SAVE" />
+          <Button fx:id="buttonSave" defaultButton="true" mnemonicParsing="true" onAction="#onSave" text="%BUTTON.SAVE" />
         </buttons>
          <VBox.margin>
             <Insets />
@@ -42,4 +42,7 @@
          </padding>
       </ButtonBar>
    </children>
+    <padding>
+        <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+    </padding>
 </VBox>

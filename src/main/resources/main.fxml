@@ -53,20 +53,20 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <children>
       <HBox fx:id="hBoxControl" VBox.vgrow="NEVER">
          <children>
             <TabPane rotateGraphic="true" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
               <tabs>
-                <Tab text="%LABEL.GAME">
+                <Tab text="%LABEL.PROJECT">
                      <content>
                         <ToolBar>
                            <items>
-                            <Button fx:id="buttonNewGame" contentDisplay="TOP" mnemonicParsing="false" onAction="#onNewGame" text="%BUTTON.NEW_GAME" />
-                              <Button fx:id="buttonRenameGame" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onEditGame" text="%BUTTON.RENAME_GAME" />
-                              <Button fx:id="buttonCloneGame" contentDisplay="TOP" disable="true" layoutX="243.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloneGame" text="%BUTTON.CLONE_GAME" />
-                              <Button fx:id="buttonDeleteGame" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onDeleteGame" text="%BUTTON.DELETE_GAME" />
+                            <Button fx:id="buttonNewProject" contentDisplay="TOP" mnemonicParsing="false" onAction="#onNewProject" text="%BUTTON.NEW_PROJECT" />
+                              <Button fx:id="buttonRenameProject" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onEditProject" text="%BUTTON.RENAME_PROJECT" />
+                              <Button fx:id="buttonCloneProject" contentDisplay="TOP" disable="true" layoutX="243.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloneProject" text="%BUTTON.CLONE_PROJECT" />
+                              <Button fx:id="buttonDeleteProject" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onDeleteProject" text="%BUTTON.DELETE_PROJECT" />
                            </items>
                         </ToolBar>
                      </content>
@@ -75,21 +75,22 @@
                      <content>
                         <ToolBar>
                            <items>
-                              <Button fx:id="buttonNewMod" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onNewMod" text="%BUTTON.NEW_MOD" />
-                              <Button fx:id="buttonEditMod" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onEditMod" text="%BUTTON.RENAME_MOD" />
-                              <Button fx:id="buttonDeleteMod" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#onDeleteMod" text="%BUTTON.DELETE_MOD" />
+                              <Button fx:id="buttonNewCategory" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onNewCategory" text="%BUTTON.NEW_CATEGORY" />
+                              <Button fx:id="buttonRenameCategory" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onEditCategory" text="%BUTTON.RENAME_CATEGORY" />
+                              <Button fx:id="buttonCloneCategory" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#onCloneCategory" text="%BUTTON.CLONE_CATEGORY" />
+                              <Button fx:id="buttonDeleteCategory" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#onDeleteCategory" text="%BUTTON.DELETE_CATEGORY" />
                            </items>
                         </ToolBar>
                      </content>
                   </Tab>
-                  <Tab text="%LABEL.LOCATION">
+                  <Tab text="%LABEL.ITEM">
                      <content>
                         <ToolBar>
                            <items>
-                              <Button fx:id="buttonInsertLocation" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#onInsertLocation" text="%BUTTON.INSERT_LOCATION" />
-                              <Button fx:id="buttonImportLocations" contentDisplay="TOP" disable="true" layoutX="206.0" layoutY="10.0" mnemonicParsing="false" onAction="#onImportLocations" text="%BUTTON.IMPORT_LOCATION" />
-                              <Button fx:id="buttonRandomLocation" contentDisplay="TOP" disable="true" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseRandomLocation" text="%BUTTON.RANDOM_LOCATION" />
-                              <Button fx:id="buttonResetLocations" contentDisplay="TOP" disable="true" layoutX="403.0" layoutY="26.0" mnemonicParsing="false" onAction="#onResetLocations" text="%BUTTON.RESET_LOCATION" />
+                              <Button fx:id="buttonInsertItem" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#onInsertItem" text="%BUTTON.INSERT_ITEM" />
+                              <Button fx:id="buttonImportItem" contentDisplay="TOP" disable="true" layoutX="206.0" layoutY="10.0" mnemonicParsing="false" onAction="#onImportItem" text="%BUTTON.IMPORT_ITEM" />
+                              <Button fx:id="buttonRandomItem" contentDisplay="TOP" disable="true" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" onAction="#onRandomItem" text="%BUTTON.RANDOM_ITEM" />
+                              <Button fx:id="buttonResetItem" contentDisplay="TOP" disable="true" layoutX="403.0" layoutY="26.0" mnemonicParsing="false" onAction="#onResetItem" text="%BUTTON.RESET_ITEM" />
                               <Separator maxWidth="1.0" minWidth="1.0" orientation="VERTICAL" prefWidth="1.0">
                                  <padding>
                                     <Insets left="2.0" />
@@ -97,11 +98,11 @@
                               </Separator>
                               <VBox maxWidth="1.7976931348623157E308" spacing="5.0">
                                  <children>
-                                    <TextField fx:id="textFieldSearchLocation" maxHeight="1.7976931348623157E308" onKeyReleased="#onKeyReleased" VBox.vgrow="ALWAYS" />
+                                    <TextField fx:id="textFieldSearchItem" maxHeight="1.7976931348623157E308" onKeyReleased="#onKeyReleased" VBox.vgrow="ALWAYS" />
                                     <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" spacing="5.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="buttonSearchLocationNext" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSearchLocation" text="%BUTTON.FIND_NEXT" HBox.hgrow="ALWAYS" />
-                                          <Button fx:id="buttonSearchLocationPrev" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSearchLocation" text="%BUTTON.FIND_PREV" HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="buttonSearchItemNext" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSearchLocation" text="%BUTTON.FIND_NEXT" HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="buttonSearchItemPrev" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSearchLocation" text="%BUTTON.FIND_PREV" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -125,10 +126,10 @@
                       <RowConstraints vgrow="NEVER" />
                     </rowConstraints>
                      <children>
-                        <Label text="%LABEL.GAME" />
-                        <ComboBox fx:id="comboGame" onAction="#onSelectGame" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <Label text="%LABEL.PROJECT" />
+                        <ComboBox fx:id="comboProject" onAction="#onSelectProject" prefWidth="150.0" GridPane.columnIndex="1" />
                         <Label layoutX="10.0" layoutY="27.0" text="%LABEL.CATEGORY" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="comboMod" onAction="#onSelectCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="comboCategory" onAction="#onSelectCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </items>
@@ -140,10 +141,10 @@
       </HBox>
   <ScrollPane fx:id="scrollPaneLocation" fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
          <content>
-            <TableView fx:id="tableLocation" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tableMenuButtonVisible="true">
+            <TableView fx:id="tableItems" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn maxWidth="1.7976931348623157E308" minWidth="40.0" prefWidth="-1.0" text="%COLUMN.ID" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="%COLUMN.VISITED" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="%COLUMN.PASSED" />
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="-1.0" text="%COLUMN.NAME" />
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="-1.0" text="%COLUMN.DESCRIPTION" />
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="%COLUMN.TYPE" />
@@ -164,7 +165,7 @@
         </Label>
             <HBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <children>
-                  <ProgressBar fx:id="progressBarLocations" maxWidth="1.7976931348623157E308" progress="0.0" HBox.hgrow="ALWAYS" />
+                  <ProgressBar fx:id="progressBarItems" maxWidth="1.7976931348623157E308" progress="0.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
       </children>

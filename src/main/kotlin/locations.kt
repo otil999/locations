@@ -1,34 +1,54 @@
 package hu.otilsoft.locations
 
 import hu.otilsoft.locations.dialog.*
-import hu.otilsoft.locations.manager.GameManager
-import hu.otilsoft.locations.manager.LocationManager
+import hu.otilsoft.locations.manager.ProjectManager
+import hu.otilsoft.locations.manager.ItemManager
 import hu.otilsoft.locations.manager.CategoryManager
+import javafx.application.Application
+import javafx.application.Application.launch
 import java.util.ResourceBundle
 import javafx.collections.FXCollections
 import javafx.event.Event
 import javafx.event.EventHandler
+import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
+import javafx.scene.Node
+import javafx.scene.Scene
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
-import javafx.scene.layout.VBox
 import javafx.stage.FileChooser
-import tornadofx.*
+import javafx.stage.Stage
 import kotlin.random.Random
 
 
 fun main(args: Array<String>) {
-    launch<LocationsApp>(args)
+    launch(LocationsApplication::class.java, *args)
 }
 
 
-class LocationsApp : App(MainView::class)
+fun imageView(resources: ResourceBundle, id: String): ImageView = ImageView(Image(resources.getString(id)))
 
 
-class MainView : View() {
-    data class LocationRow(
+class NoButtonBarDialogPane : DialogPane() {
+    override fun createButtonBar(): Node? {
+        return null
+    }
+}
+
+
+class LocationsApplication : Application() {
+    override fun start(primaryStage: Stage) {
+        MainView(primaryStage)
+    }
+}
+
+
+class MainView(private val stage: Stage) {
+    data class ItemRow(
             val id: Label,
             val name: TextField,
             val description: TextField,
@@ -37,247 +57,290 @@ class MainView : View() {
             val actions: HBox
     )
 
+    private val resources = ResourceBundle.getBundle("main")
+    private val itemResources = ResourceBundle.getBundle("item")
+    private val controller = MainController()
+
+    @FXML private lateinit var comboProject: ComboBox<String>
+    @FXML private lateinit var comboCategory: ComboBox<Category>
+    @FXML private lateinit var buttonNewProject: Button
+    @FXML private lateinit var buttonRenameProject: Button
+    @FXML private lateinit var buttonCloneProject: Button
+    @FXML private lateinit var buttonDeleteProject: Button
+    @FXML private lateinit var buttonNewCategory: Button
+    @FXML private lateinit var buttonRenameCategory: Button
+    @FXML private lateinit var buttonCloneCategory: Button
+    @FXML private lateinit var buttonDeleteCategory: Button
+    @FXML private lateinit var buttonInsertItem: Button
+    @FXML private lateinit var buttonImportItem: Button
+    @FXML private lateinit var buttonRandomItem: Button
+    @FXML private lateinit var buttonResetItem: Button
+    @FXML private lateinit var buttonSearchItemNext: Button
+    @FXML private lateinit var buttonSearchItemPrev: Button
+    @FXML private lateinit var tableItems: TableView<ItemRow>
+    @FXML private lateinit var labelProgress: Label
+    @FXML private lateinit var progressBarItems: ProgressBar
+    @FXML private lateinit var textFieldSearchItem: TextField
+    @FXML private lateinit var textItem: TextField
+
     init {
-        messages = ResourceBundle.getBundle("main")
-        title = messages["WINDOW.TITLE"]
-        primaryStage.icons.add(Image("images/locations.png"))
-        primaryStage.onCloseRequest = EventHandler {
-            controller.gameManager.closeConnection()
+        val fxmlLoader = FXMLLoader(this.javaClass.getResource("/main.fxml"), resources)
+        fxmlLoader.setController(this)
+
+        stage.apply {
+            scene = Scene(fxmlLoader.load())
+            icons.add(Image(resources.getString("WINDOW.ICON")))
+            title = resources.getString("WINDOW.TITLE")
+            width = 1024.0
+            height = 768.0
         }
-    }
 
-    private val controller: MainController by inject()
-    override val root: VBox by fxml("/main.fxml")
-    private val buttonNewGame: Button by fxid("buttonNewGame")
-    private val buttonRenameGame: Button by fxid("buttonRenameGame")
-    private val buttonCloneGame: Button by fxid("buttonCloneGame")
-    private val buttonDeleteGame: Button by fxid("buttonDeleteGame")
-    private val buttonNewMod: Button by fxid("buttonNewMod")
-    private val buttonRenameMod: Button by fxid("buttonEditMod")
-    private val buttonDeleteMod: Button by fxid("buttonDeleteMod")
-    private val buttonInsertLocation: Button by fxid("buttonInsertLocation")
-    private val buttonImportLocations: Button by fxid("buttonImportLocations")
-    private val buttonRandomLocation: Button by fxid("buttonRandomLocation")
-    private val comboGame: ComboBox<String> by fxid("comboGame")
-    private val comboCategory: ComboBox<Category> by fxid("comboMod")
-    private val tableLocation: TableView<LocationRow> by fxid("tableLocation")
-    private val textLocation: TextField by fxid("textLocation")
-    private val textFieldSearchLocation: TextField by fxid("textFieldSearchLocation")
-    private val buttonSearchLocationNext: Button by fxid("buttonSearchLocationNext")
-    private val buttonSearchLocationPrev: Button by fxid("buttonSearchLocationPrev")
-    private val progressBarLocations: ProgressBar by fxid("progressBarLocations")
-    private val labelProgress: Label by fxid("labelProgress")
-    private val buttonResetLocations: Button by fxid("buttonResetLocations")
+        buttonNewProject.graphic = imageView(resources,"BUTTON.NEW_PROJECT.ICON")
+        buttonRenameProject.graphic = imageView(resources, "BUTTON.RENAME_PROJECT.ICON")
+        buttonCloneProject.graphic = imageView(resources, "BUTTON.CLONE_PROJECT.ICON")
+        buttonDeleteProject.graphic = imageView(resources, "BUTTON.DELETE_PROJECT.ICON")
+        buttonNewCategory.graphic = imageView(resources, "BUTTON.NEW_CATEGORY.ICON")
+        buttonRenameCategory.graphic = imageView(resources, "BUTTON.RENAME_CATEGORY.ICON")
+        buttonCloneCategory.graphic = imageView(resources, "BUTTON.CLONE_CATEGORY.ICON")
+        buttonDeleteCategory.graphic = imageView(resources, "BUTTON.DELETE_CATEGORY.ICON")
+        buttonInsertItem.graphic = imageView(resources, "BUTTON.INSERT_ITEM.ICON")
+        buttonImportItem.graphic = imageView(resources, "BUTTON.IMPORT_ITEM.ICON")
+        buttonRandomItem.graphic = imageView(resources, "BUTTON.RANDOM_ITEM.ICON")
+        buttonResetItem.graphic = imageView(resources, "BUTTON.RESET_ITEM.ICON")
+        buttonSearchItemNext.graphic = imageView(resources, "BUTTON.FIND_NEXT.ICON")
+        buttonSearchItemPrev.graphic = imageView(resources,"BUTTON.FIND_PREV.ICON")
 
-    override fun onBeforeShow() {
-        super.onBeforeShow()
-        buttonNewGame.imageview(Image("images/new-game.png"))
-        buttonRenameGame.imageview(Image("images/rename-game.png"))
-        buttonCloneGame.imageview(Image("images/clone-game.png"))
-        buttonDeleteGame.imageview(Image("images/delete-game.png"))
-        buttonNewMod.imageview(Image("images/new-mod.png"))
-        buttonRenameMod.imageview(Image("images/rename-mod.png"))
-        buttonDeleteMod.imageview(Image("images/delete-mod.png"))
-        buttonInsertLocation.imageview(Image("images/add-location.png"))
-        buttonImportLocations.imageview(Image("images/import-locations.png"))
-        buttonRandomLocation.imageview(Image("images/random-location.png"))
-        buttonSearchLocationNext.imageview(Image("images/search-next.png"))
-        buttonSearchLocationPrev.imageview(Image("images/search-prev.png"))
-        buttonResetLocations.imageview(Image("images/reset-locations.png"))
-
-        initColumns()
-        fillGameCombo()
-    }
-
-    private fun initColumns() {
-        tableLocation.columns[0].cellValueFactory = PropertyValueFactory("id")
-        tableLocation.columns[0].comparator = Comparator { o1, o2 ->
+        tableItems.columns[0].cellValueFactory = PropertyValueFactory("id")
+        tableItems.columns[0].comparator = Comparator { o1, o2 ->
             ((o1 as Label).text.toInt().compareTo((o2 as Label).text.toInt()))
         }
-        tableLocation.columns[1].cellValueFactory = PropertyValueFactory("visited")
-        tableLocation.columns[1].comparator = Comparator { o1, o2 ->
+        tableItems.columns[1].cellValueFactory = PropertyValueFactory("visited")
+        tableItems.columns[1].comparator = Comparator { o1, o2 ->
             ((o1 as CheckBox).isSelected).compareTo((o2 as CheckBox).isSelected)
         }
-        tableLocation.columns[2].cellValueFactory = PropertyValueFactory("name")
-        tableLocation.columns[2].comparator = Comparator { o1, o2 ->
+        tableItems.columns[2].cellValueFactory = PropertyValueFactory("name")
+        tableItems.columns[2].comparator = Comparator { o1, o2 ->
             (o1 as TextField).text.compareTo((o2 as TextField).text)
         }
-        tableLocation.columns[3].cellValueFactory = PropertyValueFactory("description")
-        tableLocation.columns[3].comparator = Comparator { o1, o2 ->
+        tableItems.columns[3].cellValueFactory = PropertyValueFactory("description")
+        tableItems.columns[3].comparator = Comparator { o1, o2 ->
             (o1 as TextField).text.compareTo((o2 as TextField).text)
         }
-        tableLocation.columns[4].cellValueFactory = PropertyValueFactory("type")
-        tableLocation.columns[4].comparator = Comparator { o1, o2 ->
+        tableItems.columns[4].cellValueFactory = PropertyValueFactory("type")
+        tableItems.columns[4].comparator = Comparator { o1, o2 ->
             (o1 as TextField).text.compareTo((o2 as TextField).text)
         }
-        tableLocation.columns[5].cellValueFactory = PropertyValueFactory("actions")
-        tableLocation.columns[5].isSortable = false
+        tableItems.columns[5].cellValueFactory = PropertyValueFactory("actions")
+        tableItems.columns[5].isSortable = false
+
+        fillProjectCombo()
+        fillCategoryCombo()
+
+        stage.show()
     }
 
-    private fun fillGameCombo() {
-        comboGame.items = FXCollections.observableArrayList(controller.listGames().map { it.toString() })
+    @FXML
+    fun onNewProject() = openEditProjectDialog(false)
+
+    @FXML
+    fun onEditProject() = openEditProjectDialog(true, comboProject.selectionModel.selectedItem)
+
+    private fun openEditProjectDialog(update: Boolean, name: String = "") {
+        val dialog = EditProjectDialog(this.stage, update, name, controller.projectManager)
+        if (dialog.showAndWait().get() == ButtonType.OK) {
+            fillProjectCombo()
+            comboProject.selectionModel.select(dialog.savedCategory())
+        }
     }
 
-    fun onNewGame() = openEditGameDialog(false)
-    fun onEditGame() = openEditGameDialog(true, comboGame.selectedItem!!)
+    private fun fillProjectCombo() {
+        comboProject.items = FXCollections.observableArrayList(controller.listProjects())
+    }
 
-    private fun openEditGameDialog(update: Boolean, name: String = "") {
-        val dialog = find<EditGameDialog>(
-                "updateMode" to update,
-                "databaseName" to name,
-                "gameManager" to controller.gameManager
+    @FXML
+    fun onCloneProject() {
+        val clone = controller.cloneProject(comboProject.selectionModel.selectedItem)
+        fillProjectCombo()
+        comboProject.selectionModel.select(clone)
+    }
+
+    @FXML
+    fun onDeleteProject() {
+        val alert = Alert(
+            Alert.AlertType.CONFIRMATION,
+            "Do you really want to delete game '${comboProject.selectionModel.selectedItem}'?",
+            ButtonType.NO, ButtonType.YES
         )
-        dialog.openModal(block = true, owner = primaryStage)
-        if (!dialog.isCanceled()) {
-            fillGameCombo()
-            comboGame.selectionModel.select(dialog.textName.text)
+            .apply { headerText = resources.getString("CONFIRM") }
+            .showAndWait()
+
+        if (alert.isPresent && alert.get() == ButtonType.YES) {
+            controller.deleteProject(comboProject.selectionModel.selectedItem)
+            disableProject()
+            fillProjectCombo()
         }
     }
 
-    fun onCloneGame() {
-        val clone = controller.cloneGame(comboGame.selectedItem!!)
-        fillGameCombo()
-        comboGame.selectionModel.select(clone)
-    }
-
-    fun onDeleteGame() {
-        val alert = alert(
-                Alert.AlertType.CONFIRMATION,
-                "Do you really want to delete game '${comboGame.selectedItem}'?",
-                buttons = arrayOf(ButtonType.NO, ButtonType.YES)
-        )
-        if (alert.result == ButtonType.YES) {
-            controller.deleteGame(comboGame.selectedItem!!)
-            disableGame()
-            fillGameCombo()
-        }
-    }
-
-    private fun disableGame() {
-        buttonRenameGame.isDisable = true
-        buttonCloneGame.isDisable = true
-        buttonDeleteGame.isDisable = true
+    private fun disableProject() {
+        buttonRenameProject.isDisable = true
+        buttonCloneProject.isDisable = true
+        buttonDeleteProject.isDisable = true
         disableCategory()
-        buttonNewMod.isDisable = true
-        disableLocation()
+        buttonNewCategory.isDisable = true
+        disableItem()
     }
 
-    private fun enableGame() {
-        buttonRenameGame.isDisable = false
-        buttonCloneGame.isDisable = false
-        buttonDeleteGame.isDisable = false
-        buttonNewMod.isDisable = false
+    private fun enableItem() {
+        buttonInsertItem.isDisable = false
+        buttonImportItem.isDisable = false
+        buttonRandomItem.isDisable = false
+        buttonResetItem.isDisable = false
+        enableSearchButtonsWhenTextNotEmpty()
     }
 
-    private fun fillModCombo() {
-        comboCategory.items.clear()
-        comboCategory.items = FXCollections.observableArrayList(controller.listCategories())
+    private fun disableItem() {
+        buttonRandomItem.isDisable = true
+        buttonInsertItem.isDisable = true
+        buttonImportItem.isDisable = true
+        buttonResetItem.isDisable = true
+        enableSearchButtonsWhenTextNotEmpty()
+        tableItems.items.clear()
     }
 
-    fun onSelectGame() {
-        if (comboGame.selectedItem?.isNotEmpty() == true) {
-            controller.updateConnection(comboGame.selectedItem!!)
-            enableGame()
-            fillModCombo()
+    private fun enableSearchButtonsWhenTextNotEmpty() {
+        if (textFieldSearchItem.text.isEmpty()) {
+            buttonSearchItemPrev.isDisable = true
+            buttonSearchItemNext.isDisable = true
+        } else {
+            buttonSearchItemNext.isDisable = false
+            buttonSearchItemPrev.isDisable = false
+        }
+    }
+
+    @FXML fun onSelectProject() {
+        val selectedProject = comboProject.selectionModel.selectedItem ?: ""
+        if (selectedProject.isNotEmpty()) {
+            controller.updateConnection(selectedProject)
+            enableProject()
+            fillCategoryCombo()
             comboCategory.selectionModel.selectFirst()
         }
     }
 
-    private fun disableCategory() {
-        buttonNewMod.isDisable = false
-        buttonRenameMod.isDisable = true
-        buttonDeleteMod.isDisable = true
+    private fun enableProject() {
+        buttonRenameProject.isDisable = false
+        buttonCloneProject.isDisable = false
+        buttonDeleteProject.isDisable = false
+        buttonNewCategory.isDisable = false
+    }
+
+    private fun fillCategoryCombo() {
         comboCategory.items.clear()
-        disableLocation()
+        comboCategory.items = FXCollections.observableArrayList(controller.listCategories())
     }
 
-    private fun enableCategory() {
-        buttonNewMod.isDisable = false
-        buttonRenameMod.isDisable = false
-        buttonDeleteMod.isDisable = false
-        enableLocation()
+    @FXML
+    fun onNewCategory() = showEditCategoryDialog(false, Category())
+
+    @FXML
+    fun onEditCategory() = showEditCategoryDialog(true, comboCategory.selectionModel.selectedItem)
+
+    private fun showEditCategoryDialog(update: Boolean, category: Category) {
+        val dialog = EditCategoryDialog(this.stage, update, category, controller.categoryManager)
+        if (dialog.showAndWait().get() == ButtonType.OK) {
+            fillCategoryCombo()
+            comboCategory.selectionModel.select(dialog.savedCategory())
+        }
     }
 
-    private fun enableLocation() {
-        buttonInsertLocation.isDisable = false
-        buttonImportLocations.isDisable = false
-        buttonRandomLocation.isDisable = false
-        buttonResetLocations.isDisable = false
-        enableSearchButtonsWhenTextNotEmpty()
+    @FXML
+    fun onCloneCategory() {
+        TODO("FASZOM")
     }
 
-    private fun disableLocation() {
-        buttonRandomLocation.isDisable = true
-        buttonInsertLocation.isDisable = true
-        buttonImportLocations.isDisable = true
-        buttonResetLocations.isDisable = true
-        enableSearchButtonsWhenTextNotEmpty()
-        tableLocation.items.clear()
+    @FXML fun onDeleteCategory() {
+        val alert = Alert(
+                Alert.AlertType.CONFIRMATION,
+                "Do you really want to delete this mod with all of its locations?",
+                ButtonType.NO, ButtonType.YES
+        ).showAndWait()
+        if (alert.isPresent && alert.get() == ButtonType.YES) {
+            controller.deleteCategory(comboCategory.selectionModel.selectedItem)
+            fillCategoryCombo()
+            if (comboCategory.items.isEmpty()) {
+                disableCategory()
+            } else {
+                comboCategory.selectionModel.selectFirst()
+            }
+        }
     }
 
+    @FXML
     fun onSelectCategory() {
-        tableLocation.items.clear()
-        if (comboCategory.items.isEmpty() || comboCategory.selectedItem == null) {
+        tableItems.items.clear()
+        if (comboCategory.items.isEmpty() || comboCategory.selectionModel.selectedItem == null) {
             disableCategory()
         } else {
             enableCategory()
-            val locations = controller.selectLocationByCategory(comboCategory.selectedItem!!)
-            locations.map { location ->
-                LocationRow(
-                        Label(location.id.toString()).apply {
+            val items = controller.selectItemByCategory(comboCategory.selectionModel.selectedItem)
+            val itemRows = items.map { item ->
+                ItemRow(
+                        Label(item.id.toString()).apply {
                             this.alignment = Pos.CENTER_LEFT
                             this.maxHeight = Double.MAX_VALUE
                         },
-                        TextField(location.name).apply {
+                        TextField(item.name).apply {
                             this.maxWidth = Double.MAX_VALUE
                         },
-                        TextField(location.description).apply {
+                        TextField(item.description).apply {
                             this.maxWidth = Double.MAX_VALUE
                         },
-                        TextField(location.type).apply {
+                        TextField(item.type).apply {
                             this.maxWidth = Double.MAX_VALUE
                         },
                         CheckBox().apply {
-                            this.isSelected = location.visited
+                            this.isSelected = item.visited
                             this.alignment = Pos.CENTER
                             this.maxWidth = Double.MAX_VALUE
                             this.maxHeight = Double.MAX_VALUE
                         },
                         HBox().apply {
-                            this.userData = location.id
-                            add(Button("Save").apply {
-                                imageview(Image("images/save-mini.png"))
-                                this.maxWidth = Double.MAX_VALUE
-                                this.userData = location.id
+                            this.userData = item.id
+                            children.add(Button("Save").apply {
+                                graphic = imageView(itemResources, "BUTTON.SAVE_ITEM.ICON")
+                                maxWidth = Double.MAX_VALUE
+                                userData = item.id
                                 onAction = EventHandler {
                                     val sourceSaveButton = it.source as Button
-                                    val rowData = tableLocation.items.first { locationRow ->
+                                    val rowData = tableItems.items.first { locationRow ->
                                         locationRow.actions.userData == sourceSaveButton.userData
                                     }
-                                    controller.updateLocation(
-                                            Location(
-                                                    (it.source as Button).userData as Int,
-                                                    rowData.name.text,
-                                                    rowData.description.text,
-                                                    rowData.visited.isSelected,
-                                                    rowData.type.text,
-                                                    comboCategory.selectedItem?.id ?: 0
-                                            )
+                                    controller.updateItem(
+                                        Item(
+                                            (it.source as Button).userData as Int,
+                                            rowData.name.text,
+                                            rowData.description.text,
+                                            rowData.visited.isSelected,
+                                            rowData.type.text,
+                                            comboCategory.selectionModel.selectedItem?.id ?: 0
+                                        )
                                     )
                                     refreshStatus()
                                 }
                             })
-                            add(Button("Delete").apply {
-                                imageview(Image("images/delete-mini.png"))
-                                userData = location.id
+                            children.add(Button("Delete").apply {
+                                graphic = imageView(itemResources, "BUTTON.DELETE_ITEM.ICON")
+                                userData = item.id
                                 maxWidth = Double.MAX_VALUE
                                 onAction = EventHandler {
-                                    if (alert(
-                                                    Alert.AlertType.CONFIRMATION,
-                                                    "Do you really want to delete this location?",
-                                                    buttons = arrayOf(ButtonType.NO, ButtonType.YES)
-                                            ).result == ButtonType.YES) {
-                                        deleteLocation((it.source as Button).userData as Int)
+                                    val dialogResult = Alert(
+                                        Alert.AlertType.CONFIRMATION,
+                                        "Do you really want to delete this location?",
+                                        ButtonType.NO,
+                                        ButtonType.YES
+                                    ).showAndWait()
+                                    if (dialogResult.isPresent && dialogResult.get() == ButtonType.YES) {
+                                        deleteItem((it.source as Button).userData as Int)
                                         onSelectCategory()
                                     }
                                 }
@@ -287,164 +350,122 @@ class MainView : View() {
                             spacing = 5.0
                         }
                 )
-            }.forEach { tableLocation.items.add(it) }
+            }
+            tableItems.items.addAll(itemRows)
             refreshStatus()
         }
     }
 
     private fun refreshStatus() {
-        val numberOfLocations = tableLocation.items.count()
-        val numberOfVisitedLocations = tableLocation.items.count { it.visited.isSelected }
+        val numberOfLocations = tableItems.items.count()
+        val numberOfVisitedLocations = tableItems.items.count { it.visited.isSelected }
         labelProgress.text = "$numberOfVisitedLocations/$numberOfLocations"
-        progressBarLocations.progress = numberOfVisitedLocations.toDouble() / numberOfLocations
+        progressBarItems.progress = numberOfVisitedLocations.toDouble() / numberOfLocations
     }
 
-    private fun showEditCategoryDialog(update: Boolean, category: Category) {
-        val dialog = find<EditCategoryDialog>(
-                "updateMode" to update,
-                "category" to category,
-                "categoryManager" to controller.categoryManager
-        )
-        dialog.openModal(block = true, owner = primaryStage)
-        if (!dialog.isCanceled()) {
-            fillModCombo()
-            println(dialog.textName.text)
-            comboCategory.selectionModel.select(comboCategory.items.first { m -> m.name == dialog.textName.text })
-        }
+    private fun disableCategory() {
+        buttonNewCategory.isDisable = false
+        buttonRenameCategory.isDisable = true
+        buttonDeleteCategory.isDisable = true
+        comboCategory.items.clear()
+        disableItem()
     }
 
-    fun onNewMod() = showEditCategoryDialog(false, Category())
-
-    fun onEditMod() = showEditCategoryDialog(true, comboCategory.selectedItem!!)
-
-    fun onDeleteMod() {
-        val alert = alert(
-                Alert.AlertType.CONFIRMATION,
-                "Do you really want to delete this mod with all of its locations?",
-                buttons = arrayOf(ButtonType.NO, ButtonType.YES)
-        )
-        if (alert.result == ButtonType.YES) {
-            controller.deleteCategory(comboCategory.selectedItem!!)
-            fillModCombo()
-            if (comboCategory.items.isEmpty()) {
-                disableCategory()
-            } else {
-                comboCategory.selectionModel.selectFirst()
-            }
-        }
+    private fun enableCategory() {
+        buttonNewCategory.isDisable = false
+        buttonRenameCategory.isDisable = false
+        buttonDeleteCategory.isDisable = false
+        enableItem()
     }
 
-    fun onInsertLocation() {
-        val dialog = find<InsertLocationDialog>(
-                "categoryId" to (comboCategory.selectedItem as Category).id,
-                "locationManager" to controller.locationManager
-        )
-        dialog.openModal(block = true, owner = primaryStage)
-        if (!dialog.isCanceled()) {
+    @FXML fun onInsertItem() {
+        val result = InsertLocationDialog(stage, comboCategory.selectionModel.selectedItem, controller.itemManager).showAndWait()
+        if (result.isPresent && result.get() == ButtonType.OK) {
             onSelectCategory()
         }
     }
 
-    fun onImportLocations() {
+    @FXML fun onImportItem() {
         FileChooser().apply {
             initialDirectory = controller.dataDir()
             extensionFilters.addAll(FileChooser.ExtensionFilter("PSV file", "*.psv"))
-        }.showOpenDialog(currentWindow)?.let {
-            val dialog = find<ImportLocationsDialog>(
-                    "locationManager" to controller.locationManager,
-                    "psv" to it,
-                    "category" to comboCategory.selectedItem
-            )
-            dialog.openModal(owner = primaryStage, block = true)
+        }.showOpenDialog(stage.owner)?.let {
+            ImportLocationsDialog(stage, comboCategory.selectionModel.selectedItem, controller.itemManager, it).showAndWait()
             onSelectCategory()
         }
     }
 
-    private fun saveLocation() =
-            controller.addLocation(
-                Location(0, textLocation.text, "",false, "", comboCategory.selectedItem!!.id)
-            )
-
-    private fun deleteLocation(id: Int) = controller.deleteLocation(id)
-
-    fun chooseRandomLocation() {
-        val notVisitedList = tableLocation.items.filter { locationRow -> !locationRow.visited.isSelected }.toList()
+    @FXML fun onRandomItem() {
+        val notVisitedList = tableItems.items.filter { locationRow -> !locationRow.visited.isSelected }.toList()
         val rnd = Random.nextInt(notVisitedList.size)
-        val locationRow = notVisitedList[rnd]
-        tableLocation.selectWhere(true) { l -> locationRow == l }
+        val itemRow = notVisitedList[rnd]
+        tableItems.selectionModel.select(itemRow)
+        tableItems.scrollTo(itemRow)
     }
 
-    fun onSearchLocation(event: Event) {
-        val textToSearch = textFieldSearchLocation.text
-        val foundLocations = tableLocation.items.filter { locationRow ->
+    @FXML fun onResetItem() {
+        val alert = Alert(
+                Alert.AlertType.CONFIRMATION,
+                "Do you really want to reset all locations?",
+                ButtonType.NO, ButtonType.YES
+        ).showAndWait()
+        if (alert.isPresent && alert.get() == ButtonType.YES) {
+            controller.resetAllItem(comboCategory.selectionModel.selectedItem)
+            onSelectCategory()
+        }
+    }
+
+    @FXML fun onKeyReleased() {
+        controller.foundLocationIdx = -1
+        enableSearchButtonsWhenTextNotEmpty()
+        buttonSearchItemPrev.isDisable = true
+    }
+
+    @FXML fun onSearchLocation(event: Event) {
+        val textToSearch = textFieldSearchItem.text
+        val foundLocations = tableItems.items.filter { locationRow ->
             (locationRow.name.text.indexOf(textToSearch, ignoreCase = true) >= 0 ||
             locationRow.description.text.indexOf(textToSearch, ignoreCase = true) >= 0)
         }.toList()
-        if (event.source == buttonSearchLocationNext && controller.foundLocationIdx < foundLocations.lastIndex) {
+        if (event.source == buttonSearchItemNext && controller.foundLocationIdx < foundLocations.lastIndex) {
             controller.foundLocationIdx++
-        } else if (event.source == buttonSearchLocationPrev && controller.foundLocationIdx > 0) {
+        } else if (event.source == buttonSearchItemPrev && controller.foundLocationIdx > 0) {
             controller.foundLocationIdx--
         }
         if (controller.foundLocationIdx >= 0) {
-            tableLocation.selectWhere(true) { row -> row == foundLocations[controller.foundLocationIdx] }
-            buttonSearchLocationPrev.isDisable = false
+            tableItems.selectionModel.select(foundLocations[controller.foundLocationIdx])
+            tableItems.scrollTo(foundLocations[controller.foundLocationIdx])
+            buttonSearchItemPrev.isDisable = false
         }
     }
 
-    fun onKeyReleased() {
-        controller.foundLocationIdx = -1
-        enableSearchButtonsWhenTextNotEmpty()
-        buttonSearchLocationPrev.isDisable = true
-    }
-
-    private fun enableSearchButtonsWhenTextNotEmpty() {
-        if (textFieldSearchLocation.text.isEmpty()) {
-            buttonSearchLocationPrev.isDisable = true
-            buttonSearchLocationNext.isDisable = true
-        } else {
-            buttonSearchLocationNext.isDisable = false
-            buttonSearchLocationPrev.isDisable = false
-        }
-    }
-
-    fun onResetLocations() {
-        val alert = alert(
-                Alert.AlertType.CONFIRMATION,
-                "Do you really want to reset all locations?",
-                buttons = arrayOf(ButtonType.NO, ButtonType.YES)
-        )
-        if (alert.result == ButtonType.YES) {
-            controller.resetAllLocations(comboCategory.selectedItem!!)
-            onSelectCategory()
-        }
-    }
+    private fun deleteItem(id: Int) = controller.deleteItem(id)
 }
 
 
-class MainController : Controller() {
-    val gameManager = GameManager()
+class MainController {
+    val projectManager = ProjectManager()
     val categoryManager = CategoryManager()
-    val locationManager = LocationManager()
+    val itemManager = ItemManager()
     var foundLocationIdx = -1
 
-    internal fun dataDir() = gameManager.dataRoot.toAbsolutePath().toFile()
+    internal fun dataDir() = projectManager.dataRoot.toAbsolutePath().toFile()
 
     internal fun updateConnection(game: String) {
-        val connection = gameManager.openConnection(game)
+        val connection = projectManager.openConnection(game)
         categoryManager.connection = connection
-        locationManager.connection = connection
+        itemManager.connection = connection
     }
 
-    internal fun listGames() = gameManager.findGames()
-    internal fun cloneGame(game: String) = gameManager.cloneDatabase(game)
-    internal fun deleteGame(game: String) = gameManager.deleteDatabase(game)
+    internal fun listProjects() = projectManager.findProjects()
+    internal fun cloneProject(project: String) = projectManager.cloneDatabase(project)
+    internal fun deleteProject(project: String) = projectManager.deleteDatabase(project)
 
     internal fun deleteCategory(category: Category) = categoryManager.delete(category)
     internal fun listCategories() = categoryManager.findAll()
 
-    internal fun addLocation(location: Location) = locationManager.add(location)
-    internal fun deleteLocation(id: Int) = locationManager.delete(id)
-    internal fun selectLocationByCategory(category: Category) : List<Location> = locationManager.findByCategory(category)
-    internal fun updateLocation(location: Location) = locationManager.update(location)
-    internal fun resetAllLocations(category: Category) = locationManager.resetAll(category)
+    internal fun deleteItem(id: Int) = itemManager.delete(id)
+    internal fun selectItemByCategory(category: Category) : List<Item> = itemManager.findByCategory(category)
+    internal fun updateItem(item: Item) = itemManager.update(item)
+    internal fun resetAllItem(category: Category) = itemManager.resetAll(category)
 }

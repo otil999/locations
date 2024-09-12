@@ -1,38 +1,38 @@
 package hu.otilsoft.locations.manager
 
-import hu.otilsoft.locations.Location
 import hu.otilsoft.locations.Category
+import hu.otilsoft.locations.Item
 import java.sql.Connection
 import java.sql.PreparedStatement
 
 
-class LocationManager {
-    private val sqlInsert = "INSERT INTO location (name, description, type, visited, category_id) VALUES (?, ?, ?, ?, ?)"
-    private val sqlDelete = "DELETE FROM location WHERE id = ?"
-    private val sqlUpdate = "UPDATE location SET name = ?, description = ?, type = ?, visited = ? WHERE id = ?"
-    private val sqlSelectByCategory = "SELECT * FROM location WHERE category_id = ? ORDER BY id"
-    private val sqlResetAll = "UPDATE location SET visited = FALSE WHERE category_id = ?"
+class ItemManager {
+    private val sqlInsert = "INSERT INTO item (name, description, type, passed, category_id) VALUES (?, ?, ?, ?, ?)"
+    private val sqlDelete = "DELETE FROM item WHERE id = ?"
+    private val sqlUpdate = "UPDATE item SET name = ?, description = ?, type = ?, passed = ? WHERE id = ?"
+    private val sqlSelectByCategory = "SELECT * FROM item WHERE category_id = ? ORDER BY id"
+    private val sqlResetAll = "UPDATE item SET visited = FALSE WHERE category_id = ?"
 
     var connection: Connection? = null
 
-    fun add(location: Location) {
+    fun add(item: Item) {
         connection?.let { connection ->
             connection.prepareStatement(sqlInsert).use {
-                fillCommonParamsInStatement(it, location)
-                it.setInt(5, location.modId)
+                fillCommonParamsInStatement(it, item)
+                it.setInt(5, item.modId)
                 it.executeUpdate()
             }
         }
     }
     
-    private fun fillCommonParamsInStatement(statement: PreparedStatement, location: Location) {
-        statement.setString(1, location.name)
-        statement.setString(2, location.description)
-        statement.setString(3, location.type)
-        statement.setBoolean(4, location.visited)
+    private fun fillCommonParamsInStatement(statement: PreparedStatement, item: Item) {
+        statement.setString(1, item.name)
+        statement.setString(2, item.description)
+        statement.setString(3, item.type)
+        statement.setBoolean(4, item.visited)
     }
 
-    fun update(location: Location) {
+    fun update(location: Item) {
         connection?.let { connection ->
             connection.prepareStatement(sqlUpdate).use {
                 fillCommonParamsInStatement(it, location)
@@ -51,19 +51,19 @@ class LocationManager {
         }
     }
 
-    fun findByCategory(category: Category) : List<Location> {
-        val locationList: MutableList<Location> = mutableListOf()
+    fun findByCategory(category: Category) : List<Item> {
+        val locationList: MutableList<Item> = mutableListOf()
         connection?.let { connection ->
             connection.prepareStatement(sqlSelectByCategory).use {
                 it.setInt(1, category.id)
                 val result = it.executeQuery()
                 while (result.next()) {
                     locationList.add(
-                            Location(
+                            Item(
                                     result.getInt("id"),
                                     result.getString("name"),
                                     result.getString("description"),
-                                    result.getBoolean("visited"),
+                                    result.getBoolean("passed"),
                                     result.getString("type"),
                                     result.getInt("category_id")
                             )

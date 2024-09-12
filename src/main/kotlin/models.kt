@@ -9,7 +9,7 @@ data class Category (
 }
 
 
-data class Location(
+data class Item(
     val id: Int,
     val name: String,
     val description: String,
