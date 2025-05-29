@@ -1,4 +1,4 @@
-package hu.otilsoft.locations.manager
+package hu.otilsoft.tracker.manager
 
 import java.nio.file.Files
 import java.nio.file.Path

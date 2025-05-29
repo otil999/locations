@@ -1,13 +1,13 @@
-package hu.otilsoft.locations.manager
+package hu.otilsoft.tracker.manager
 
-import hu.otilsoft.locations.Category
+import hu.otilsoft.tracker.Category
 import java.sql.Connection
 
 
 class CategoryManager {
     private val sqlInsert = "INSERT INTO category (name) VALUES (?)"
     private val sqlUpdate = "UPDATE category SET name = ? WHERE id = ?"
-    private val sqlDeleteCategoryLocations = "DELETE FROM location WHERE category_id = ?"
+    private val sqlDeleteCategoryLocations = "DELETE FROM item WHERE category_id = ?"
     private val sqlDelete = "DELETE FROM category WHERE id = ?"
     private val sqlSelect = "SELECT * FROM category ORDER BY name"
     private val sqlGetByName = "SELECT * FROM category WHERE name = ?"

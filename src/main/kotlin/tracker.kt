@@ -1,17 +1,19 @@
-package hu.otilsoft.locations
+package hu.otilsoft.tracker
 
-import hu.otilsoft.locations.dialog.*
-import hu.otilsoft.locations.manager.ProjectManager
-import hu.otilsoft.locations.manager.ItemManager
-import hu.otilsoft.locations.manager.CategoryManager
+import hu.otilsoft.tracker.dialog.*
+import hu.otilsoft.tracker.manager.ProjectManager
+import hu.otilsoft.tracker.manager.ItemManager
+import hu.otilsoft.tracker.manager.CategoryManager
 import javafx.application.Application
 import javafx.application.Application.launch
+import javafx.beans.binding.Bindings
 import java.util.ResourceBundle
 import javafx.collections.FXCollections
 import javafx.event.Event
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.fxml.Initializable
 import javafx.geometry.Pos
 import javafx.scene.Node
 import javafx.scene.Scene
@@ -22,11 +24,12 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.stage.FileChooser
 import javafx.stage.Stage
+import java.net.URL
 import kotlin.random.Random
 
 
 fun main(args: Array<String>) {
-    launch(LocationsApplication::class.java, *args)
+    launch(ProgressTrackerApplication::class.java, *args)
 }
 
 
@@ -40,14 +43,18 @@ class NoButtonBarDialogPane : DialogPane() {
 }
 
 
-class LocationsApplication : Application() {
+class ProgressTrackerApplication : Application() {
     override fun start(primaryStage: Stage) {
-        MainView(primaryStage)
+        val fxmlLoader = FXMLLoader(this.javaClass.getResource("/main.fxml"), ResourceBundle.getBundle("main"))
+        fxmlLoader.setController(MainController(primaryStage))
+
+        primaryStage.scene = Scene(fxmlLoader.load())
+        primaryStage.show()
     }
 }
 
 
-class MainView(private val stage: Stage) {
+class MainController(private val stage: Stage) : Initializable {
     data class ItemRow(
             val id: Label,
             val name: TextField,
@@ -59,7 +66,6 @@ class MainView(private val stage: Stage) {
 
     private val resources = ResourceBundle.getBundle("main")
     private val itemResources = ResourceBundle.getBundle("item")
-    private val controller = MainController()
 
     @FXML private lateinit var comboProject: ComboBox<String>
     @FXML private lateinit var comboCategory: ComboBox<Category>
@@ -83,17 +89,11 @@ class MainView(private val stage: Stage) {
     @FXML private lateinit var textFieldSearchItem: TextField
     @FXML private lateinit var textItem: TextField
 
-    init {
-        val fxmlLoader = FXMLLoader(this.javaClass.getResource("/main.fxml"), resources)
-        fxmlLoader.setController(this)
-
-        stage.apply {
-            scene = Scene(fxmlLoader.load())
-            icons.add(Image(resources.getString("WINDOW.ICON")))
-            title = resources.getString("WINDOW.TITLE")
-            width = 1024.0
-            height = 768.0
-        }
+    override fun initialize(url: URL, resources: ResourceBundle) {
+        stage.icons.add(Image(resources.getString("WINDOW.ICON")))
+        stage.title = resources.getString("WINDOW.TITLE")
+        stage.width = 1024.0
+        stage.height = 768.0
 
         buttonNewProject.graphic = imageView(resources,"BUTTON.NEW_PROJECT.ICON")
         buttonRenameProject.graphic = imageView(resources, "BUTTON.RENAME_PROJECT.ICON")
@@ -102,6 +102,7 @@ class MainView(private val stage: Stage) {
         buttonNewCategory.graphic = imageView(resources, "BUTTON.NEW_CATEGORY.ICON")
         buttonRenameCategory.graphic = imageView(resources, "BUTTON.RENAME_CATEGORY.ICON")
         buttonCloneCategory.graphic = imageView(resources, "BUTTON.CLONE_CATEGORY.ICON")
+        buttonCloneCategory.disableProperty().bind(comboCategory.valueProperty().isNull)
         buttonDeleteCategory.graphic = imageView(resources, "BUTTON.DELETE_CATEGORY.ICON")
         buttonInsertItem.graphic = imageView(resources, "BUTTON.INSERT_ITEM.ICON")
         buttonImportItem.graphic = imageView(resources, "BUTTON.IMPORT_ITEM.ICON")
@@ -146,7 +147,7 @@ class MainView(private val stage: Stage) {
     fun onEditProject() = openEditProjectDialog(true, comboProject.selectionModel.selectedItem)
 
     private fun openEditProjectDialog(update: Boolean, name: String = "") {
-        val dialog = EditProjectDialog(this.stage, update, name, controller.projectManager)
+        val dialog = EditProjectDialog(this.stage, update, name, projectManager)
         if (dialog.showAndWait().get() == ButtonType.OK) {
             fillProjectCombo()
             comboProject.selectionModel.select(dialog.savedCategory())
@@ -154,12 +155,12 @@ class MainView(private val stage: Stage) {
     }
 
     private fun fillProjectCombo() {
-        comboProject.items = FXCollections.observableArrayList(controller.listProjects())
+        comboProject.items = FXCollections.observableArrayList(listProjects())
     }
 
     @FXML
     fun onCloneProject() {
-        val clone = controller.cloneProject(comboProject.selectionModel.selectedItem)
+        val clone = cloneProject(comboProject.selectionModel.selectedItem)
         fillProjectCombo()
         comboProject.selectionModel.select(clone)
     }
@@ -175,7 +176,7 @@ class MainView(private val stage: Stage) {
             .showAndWait()
 
         if (alert.isPresent && alert.get() == ButtonType.YES) {
-            controller.deleteProject(comboProject.selectionModel.selectedItem)
+            deleteProject(comboProject.selectionModel.selectedItem)
             disableProject()
             fillProjectCombo()
         }
@@ -220,7 +221,7 @@ class MainView(private val stage: Stage) {
     @FXML fun onSelectProject() {
         val selectedProject = comboProject.selectionModel.selectedItem ?: ""
         if (selectedProject.isNotEmpty()) {
-            controller.updateConnection(selectedProject)
+            updateConnection(selectedProject)
             enableProject()
             fillCategoryCombo()
             comboCategory.selectionModel.selectFirst()
@@ -236,7 +237,7 @@ class MainView(private val stage: Stage) {
 
     private fun fillCategoryCombo() {
         comboCategory.items.clear()
-        comboCategory.items = FXCollections.observableArrayList(controller.listCategories())
+        comboCategory.items = FXCollections.observableArrayList(listCategories())
     }
 
     @FXML
@@ -246,7 +247,7 @@ class MainView(private val stage: Stage) {
     fun onEditCategory() = showEditCategoryDialog(true, comboCategory.selectionModel.selectedItem)
 
     private fun showEditCategoryDialog(update: Boolean, category: Category) {
-        val dialog = EditCategoryDialog(this.stage, update, category, controller.categoryManager)
+        val dialog = EditCategoryDialog(this.stage, update, category, categoryManager)
         if (dialog.showAndWait().get() == ButtonType.OK) {
             fillCategoryCombo()
             comboCategory.selectionModel.select(dialog.savedCategory())
@@ -255,7 +256,14 @@ class MainView(private val stage: Stage) {
 
     @FXML
     fun onCloneCategory() {
-        TODO("FASZOM")
+        val categoryToClone = comboCategory.selectionModel.selectedItem
+        val clone = categoryManager.add(Category(name = "Clone of ${categoryToClone.name}"))
+        itemManager
+            .findByCategory(categoryToClone)
+            .onEach { it.categoryId = clone.id }
+            .forEach { itemManager.add(it) }
+        comboCategory.items.addAll(clone)
+        comboCategory.selectionModel.select(clone)
     }
 
     @FXML fun onDeleteCategory() {
@@ -265,7 +273,7 @@ class MainView(private val stage: Stage) {
                 ButtonType.NO, ButtonType.YES
         ).showAndWait()
         if (alert.isPresent && alert.get() == ButtonType.YES) {
-            controller.deleteCategory(comboCategory.selectionModel.selectedItem)
+            deleteCategory(comboCategory.selectionModel.selectedItem)
             fillCategoryCombo()
             if (comboCategory.items.isEmpty()) {
                 disableCategory()
@@ -282,7 +290,7 @@ class MainView(private val stage: Stage) {
             disableCategory()
         } else {
             enableCategory()
-            val items = controller.selectItemByCategory(comboCategory.selectionModel.selectedItem)
+            val items = selectItemByCategory(comboCategory.selectionModel.selectedItem)
             val itemRows = items.map { item ->
                 ItemRow(
                         Label(item.id.toString()).apply {
@@ -315,7 +323,7 @@ class MainView(private val stage: Stage) {
                                     val rowData = tableItems.items.first { locationRow ->
                                         locationRow.actions.userData == sourceSaveButton.userData
                                     }
-                                    controller.updateItem(
+                                    updateItem(
                                         Item(
                                             (it.source as Button).userData as Int,
                                             rowData.name.text,
@@ -379,7 +387,7 @@ class MainView(private val stage: Stage) {
     }
 
     @FXML fun onInsertItem() {
-        val result = InsertLocationDialog(stage, comboCategory.selectionModel.selectedItem, controller.itemManager).showAndWait()
+        val result = InsertLocationDialog(stage, comboCategory.selectionModel.selectedItem, itemManager).showAndWait()
         if (result.isPresent && result.get() == ButtonType.OK) {
             onSelectCategory()
         }
@@ -387,10 +395,10 @@ class MainView(private val stage: Stage) {
 
     @FXML fun onImportItem() {
         FileChooser().apply {
-            initialDirectory = controller.dataDir()
+            initialDirectory = dataDir()
             extensionFilters.addAll(FileChooser.ExtensionFilter("PSV file", "*.psv"))
         }.showOpenDialog(stage.owner)?.let {
-            ImportLocationsDialog(stage, comboCategory.selectionModel.selectedItem, controller.itemManager, it).showAndWait()
+            ImportLocationsDialog(stage, comboCategory.selectionModel.selectedItem, itemManager, it).showAndWait()
             onSelectCategory()
         }
     }
@@ -410,13 +418,13 @@ class MainView(private val stage: Stage) {
                 ButtonType.NO, ButtonType.YES
         ).showAndWait()
         if (alert.isPresent && alert.get() == ButtonType.YES) {
-            controller.resetAllItem(comboCategory.selectionModel.selectedItem)
+            resetAllItem(comboCategory.selectionModel.selectedItem)
             onSelectCategory()
         }
     }
 
     @FXML fun onKeyReleased() {
-        controller.foundLocationIdx = -1
+        foundLocationIdx = -1
         enableSearchButtonsWhenTextNotEmpty()
         buttonSearchItemPrev.isDisable = true
     }
@@ -427,23 +435,18 @@ class MainView(private val stage: Stage) {
             (locationRow.name.text.indexOf(textToSearch, ignoreCase = true) >= 0 ||
             locationRow.description.text.indexOf(textToSearch, ignoreCase = true) >= 0)
         }.toList()
-        if (event.source == buttonSearchItemNext && controller.foundLocationIdx < foundLocations.lastIndex) {
-            controller.foundLocationIdx++
-        } else if (event.source == buttonSearchItemPrev && controller.foundLocationIdx > 0) {
-            controller.foundLocationIdx--
+        if (event.source == buttonSearchItemNext && foundLocationIdx < foundLocations.lastIndex) {
+            foundLocationIdx++
+        } else if (event.source == buttonSearchItemPrev && foundLocationIdx > 0) {
+            foundLocationIdx--
         }
-        if (controller.foundLocationIdx >= 0) {
-            tableItems.selectionModel.select(foundLocations[controller.foundLocationIdx])
-            tableItems.scrollTo(foundLocations[controller.foundLocationIdx])
+        if (foundLocationIdx >= 0) {
+            tableItems.selectionModel.select(foundLocations[foundLocationIdx])
+            tableItems.scrollTo(foundLocations[foundLocationIdx])
             buttonSearchItemPrev.isDisable = false
         }
     }
 
-    private fun deleteItem(id: Int) = controller.deleteItem(id)
-}
-
-
-class MainController {
     val projectManager = ProjectManager()
     val categoryManager = CategoryManager()
     val itemManager = ItemManager()

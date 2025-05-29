@@ -1,4 +1,4 @@
-package hu.otilsoft.locations
+package hu.otilsoft.tracker
 
 
 data class Category (
@@ -15,7 +15,7 @@ data class Item(
     val description: String,
     val visited: Boolean,
     val type: String,
-    val categoryId: Int
+    var categoryId: Int
 ) {
     override fun toString(): String = name
 }

@@ -1,8 +1,8 @@
-package hu.otilsoft.locations.dialog
+package hu.otilsoft.tracker.dialog
 
-import hu.otilsoft.locations.NoButtonBarDialogPane
-import hu.otilsoft.locations.imageView
-import hu.otilsoft.locations.manager.ProjectManager
+import hu.otilsoft.tracker.NoButtonBarDialogPane
+import hu.otilsoft.tracker.imageView
+import hu.otilsoft.tracker.manager.ProjectManager
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.*
@@ -15,7 +15,8 @@ class EditProjectDialog(
     owner: Window,
     private val update: Boolean,
     private val categoryName: String,
-    projectManager: ProjectManager) : Dialog<ButtonType>()
+    projectManager: ProjectManager
+) : Dialog<ButtonType>()
 {
     init {
         val resources = ResourceBundle.getBundle("edit-project-dialog")

@@ -51,7 +51,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>hu.otilsoft.locations.LocationsKt</mainClass>
+                            <mainClass>hu.otilsoft.tracker.TrackerKt</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -76,13 +76,18 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>23.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17</version>
+            <version>23.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.0.1</version>
+            <version>23.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

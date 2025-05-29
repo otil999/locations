@@ -1,10 +1,10 @@
-package hu.otilsoft.locations.dialog
+package hu.otilsoft.tracker.dialog
 
-import hu.otilsoft.locations.Category
-import hu.otilsoft.locations.Item
-import hu.otilsoft.locations.NoButtonBarDialogPane
-import hu.otilsoft.locations.imageView
-import hu.otilsoft.locations.manager.ItemManager
+import hu.otilsoft.tracker.Category
+import hu.otilsoft.tracker.Item
+import hu.otilsoft.tracker.NoButtonBarDialogPane
+import hu.otilsoft.tracker.imageView
+import hu.otilsoft.tracker.manager.ItemManager
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.*

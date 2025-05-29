@@ -1,7 +1,7 @@
-package hu.otilsoft.locations.manager
+package hu.otilsoft.tracker.manager
 
-import hu.otilsoft.locations.Category
-import hu.otilsoft.locations.Item
+import hu.otilsoft.tracker.Category
+import hu.otilsoft.tracker.Item
 import java.sql.Connection
 import java.sql.PreparedStatement
 
@@ -11,7 +11,7 @@ class ItemManager {
     private val sqlDelete = "DELETE FROM item WHERE id = ?"
     private val sqlUpdate = "UPDATE item SET name = ?, description = ?, type = ?, passed = ? WHERE id = ?"
     private val sqlSelectByCategory = "SELECT * FROM item WHERE category_id = ? ORDER BY id"
-    private val sqlResetAll = "UPDATE item SET visited = FALSE WHERE category_id = ?"
+    private val sqlResetAll = "UPDATE item SET passed = FALSE WHERE category_id = ?"
 
     var connection: Connection? = null
 

@@ -1,17 +1,19 @@
-package hu.otilsoft.locations.dialog
+package hu.otilsoft.tracker.dialog
 
-import hu.otilsoft.locations.Category
-import hu.otilsoft.locations.NoButtonBarDialogPane
-import hu.otilsoft.locations.manager.ItemManager
+import hu.otilsoft.tracker.Category
+import hu.otilsoft.tracker.NoButtonBarDialogPane
+import hu.otilsoft.tracker.manager.ItemManager
 import javafx.application.Platform
 import javafx.concurrent.Task
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
 import javafx.scene.control.Dialog
 import javafx.scene.control.Label
 import javafx.scene.control.ProgressBar
 import javafx.stage.Modality
+import javafx.stage.Stage
 import javafx.stage.Window
 import java.io.File
 import java.sql.Connection
@@ -36,10 +38,20 @@ class ImportLocationsDialog(owner: Window, category: Category, itemManager: Item
 
         title = resources.getString("DIALOG.TITLE")
 
-        val task = Importer(itemManager.connection, category.id, psv, resources.getString("LABEL.IMPORT"), this)
+        val task = Importer(itemManager.connection, category.id, psv, resources.getString("LABEL.IMPORT"))
+        task.setOnFailed {
+            val alert = Alert(Alert.AlertType.ERROR, task.exception.stackTraceToString(), ButtonType.OK).apply {
+                headerText = "Error when importing items."
+            }
+            alert.showAndWait()
+            (dialogPane.scene.window as Stage).close()
+        }
+        task.setOnSucceeded { (dialogPane.scene.window as Stage).close() }
         progressImport.progressProperty().bind(task.progressProperty())
         labelImport.textProperty().bind(task.messageProperty())
-        Thread(task).start()
+        val importerThread = Thread(task)
+        importerThread.isDaemon = true
+        importerThread.start()
     }
 
     private fun onCloseRequest() {
@@ -53,25 +65,12 @@ internal class Importer(
         private val connection: Connection?,
         private val categoryId: Int,
         private val psv: File,
-        private val messagePrefix: String,
-        private val dialog: Dialog<ButtonType>
-) : Task<Long>() {
-    private val sqlInsert = "INSERT INTO location (name, description, type, category_id) VALUES (?, ?, ?, ?)"
+        private val messagePrefix: String
+) : Task<Unit>() {
+    private val sqlInsert = "INSERT INTO item (name, description, type, category_id) VALUES (?, ?, ?, ?)"
 
-    override fun call() = import(calculateTotal())
-
-    private fun calculateTotal() = psv.useLines { block -> block.count().toLong() }
-
-    override fun done() {
-        println("ITT VAGYOK")
-        super.done()
-        Platform.runLater {
-            dialog.result = ButtonType.OK
-            dialog.close()
-        }
-    }
-
-    private fun import(total: Long): Long {
+    override fun call() {
+        val total = psv.useLines { block -> block.count().toLong() }
         var current = 1L
         connection?.let { connection ->
             connection.prepareStatement(sqlInsert).use { stmt ->
@@ -90,6 +89,5 @@ internal class Importer(
                 }
             }
         }
-        return current
     }
 }
